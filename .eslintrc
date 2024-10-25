@@ -1,0 +1,16 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+  },
+  "plugins": ["unused-imports", "@typescript-eslint"],
+  "extends": ["plugin:prettier/recommended", "next/core-web-vitals"],
+  "rules": {
+    "unused-imports/no-unused-imports-ts": ["error"],
+
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
+
+    "no-console": "error",
+  },
+}
