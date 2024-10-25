@@ -1,0 +1,16 @@
+{
+  "name": "런닝할래",
+  "short_name": "런닝할래",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#B6F828",
+  "background_color": "#ffffff",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/runninghallaeicon.png",
+      "type": "image/png",
+      "sizes": "210x210"
+    }
+  ]
+}
