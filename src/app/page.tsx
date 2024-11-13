@@ -28,11 +28,7 @@ export const metadata: Metadata = {
 };
 
 const Main = () => {
-  return (
-    <div>
-      <Button />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Main;
