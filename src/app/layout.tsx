@@ -1,5 +1,7 @@
 'use client';
 
+import { GlobalStyle } from '@/styles';
+
 import Providers from './providers';
 
 const RootLayout = ({
@@ -10,6 +12,7 @@ const RootLayout = ({
   return (
     <html lang='ko'>
       <Providers>
+        <GlobalStyle />
         <body>{children}</body>
       </Providers>
     </html>
