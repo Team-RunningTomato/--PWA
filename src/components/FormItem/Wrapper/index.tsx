@@ -3,7 +3,7 @@
 import * as S from './style';
 
 interface Props {
-  title?: string;
+  title?: string | null;
   errorMessage?: string | null;
   successMessage?: string | null;
   children: React.ReactNode;

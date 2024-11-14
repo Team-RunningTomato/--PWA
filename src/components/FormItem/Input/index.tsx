@@ -7,7 +7,7 @@ import { Wrapper } from '@/components';
 import * as S from './style';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  inputTitle: string;
+  inputTitle?: string | null;
   errorMessage?: string | null;
   successMessage?: string | null;
 }
