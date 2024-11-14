@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
 
-import { Button } from '@/components';
-
 export const metadata: Metadata = {
   title: '런닝할래',
   description: '친구들과 함께 런닝할래?',
@@ -28,7 +26,11 @@ export const metadata: Metadata = {
 };
 
 const Main = () => {
-  return <div></div>;
+  return (
+    <div>
+      <div>hello</div>
+    </div>
+  );
 };
 
 export default Main;
