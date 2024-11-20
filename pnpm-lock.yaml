@@ -17,6 +17,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.13.0
         version: 11.13.0(@emotion/react@11.13.3(@types/react@18.3.12)(react@19.0.0-rc-69d4b800-20241021))(@types/react@18.3.12)(react@19.0.0-rc-69d4b800-20241021)
+      '@storybook/addon-viewport':
+        specifier: ^8.4.3
+        version: 8.4.3(storybook@8.3.6)
       emotion-reset:
         specifier: ^3.0.1
         version: 3.0.1(@emotion/react@11.13.3(@types/react@18.3.12)(react@19.0.0-rc-69d4b800-20241021))
@@ -1310,6 +1313,11 @@ packages:
     resolution: {integrity: sha512-bL51v837W1cng/+0pypkoLsWKWmvux96zLOzqLCpcWAQ4OSMhW3foIWpCiFwMG/KY+GanoOocTx6i7j5hLtuTA==}
     peerDependencies:
       storybook: ^8.3.6
+
+  '@storybook/addon-viewport@8.4.3':
+    resolution: {integrity: sha512-KUstpUx++5cWXMXlz9jBhM6qDW9rwtKMvTyJV24TmhYIDmynset2ILRknIqLbVdBixop40+I67O3SF/ydU4E0w==}
+    peerDependencies:
+      storybook: ^8.4.3
 
   '@storybook/blocks@8.3.6':
     resolution: {integrity: sha512-Oc5jU6EzfsENjrd91KcKyEKBh60RT+8uyLi1RIrymC2C/mzZMTEoNIrbnQt0eIqbjlHxn6y9JMJxHu4NJ4EmZg==}
@@ -6003,6 +6011,11 @@ snapshots:
       storybook: 8.3.6
 
   '@storybook/addon-viewport@8.3.6(storybook@8.3.6)':
+    dependencies:
+      memoizerific: 1.11.3
+      storybook: 8.3.6
+
+  '@storybook/addon-viewport@8.4.3(storybook@8.3.6)':
     dependencies:
       memoizerific: 1.11.3
       storybook: 8.3.6
