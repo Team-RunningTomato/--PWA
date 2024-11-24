@@ -1,18 +1,18 @@
 'use client';
 
-import { forwardRef } from 'react';
-
 import { Wrapper } from '@/components';
+
+import { forwardRef } from 'react';
 
 import * as S from './style';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  inputTitle?: string | null;
-  errorMessage?: string | null;
-  successMessage?: string | null;
+  inputTitle?: string;
+  errorMessage?: string;
+  successMessage?: string;
 }
 
-const InputFormItem = forwardRef<HTMLInputElement, Props>(
+const Input = forwardRef<HTMLInputElement, Props>(
   ({ inputTitle, errorMessage, successMessage, ...attributes }, ref) => (
     <Wrapper
       title={inputTitle}
@@ -29,6 +29,6 @@ const InputFormItem = forwardRef<HTMLInputElement, Props>(
   )
 );
 
-InputFormItem.displayName = 'Input';
+Input.displayName = 'Input';
 
-export default InputFormItem;
+export default Input;
