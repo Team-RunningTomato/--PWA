@@ -14,12 +14,19 @@ const meta: Meta<typeof Wrapper> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Wrapper>;
 
 export const Primary: Story = {};
 
-export const Errored: Story = {
+export const Error: Story = {
   args: {
     errorMessage: 'Error Message',
+  },
+};
+
+export const Success: Story = {
+  args: {
+    successMessage: 'Success Message',
   },
 };

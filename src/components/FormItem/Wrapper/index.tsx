@@ -3,9 +3,9 @@
 import * as S from './style';
 
 interface Props {
-  title?: string | null;
-  errorMessage?: string | null;
-  successMessage?: string | null;
+  title?: string;
+  errorMessage?: string;
+  successMessage?: string;
   children: React.ReactNode;
 }
 
@@ -18,11 +18,12 @@ const Wrapper: React.FC<Props> = ({
   <S.Container>
     {title && <S.Title>{title}</S.Title>}
     {children}
-    {(successMessage || errorMessage) && errorMessage ? (
-      <S.ErrorMessage>{errorMessage}</S.ErrorMessage>
-    ) : (
-      <S.SuccessMessage>{successMessage}</S.SuccessMessage>
-    )}
+    {(successMessage || errorMessage) &&
+      (errorMessage ? (
+        <S.ErrorMessage>{errorMessage}</S.ErrorMessage>
+      ) : (
+        <S.SuccessMessage>{successMessage}</S.SuccessMessage>
+      ))}
   </S.Container>
 );
 

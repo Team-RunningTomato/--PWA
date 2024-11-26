@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import InputFormItem from '.';
+import Input from '.';
 
-const meta: Meta<typeof InputFormItem> = {
-  component: InputFormItem,
+const meta: Meta<typeof Input> = {
+  component: Input,
   parameters: {
     layout: 'padded',
   },
@@ -16,11 +16,11 @@ const meta: Meta<typeof InputFormItem> = {
 
 export default meta;
 
-type Story = StoryObj<typeof InputFormItem>;
+type Story = StoryObj<typeof Input>;
 
 export const Primary: Story = {};
 
-export const Errored: Story = {
+export const Error: Story = {
   args: {
     errorMessage: 'Error Message',
   },

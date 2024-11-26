@@ -1,20 +1,18 @@
-import type { StorybookConfig } from '@storybook/nextjs';
 import path from 'path';
+
+import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.tsx'],
   addons: [
-    '@storybook/addon-onboarding',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
+    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/nextjs',
-    options: {
-      nextConfigPath: '../next.config.js',
-    },
+    options: {},
   },
   docs: {
     autodocs: 'tag',
@@ -38,7 +36,5 @@ const config: StorybookConfig = {
       ],
     ],
   }),
-  staticDirs: ['../src'],
 };
-
 export default config;
