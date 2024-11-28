@@ -1,4 +1,6 @@
-import { theme } from '@/styles';
+'use client';
+
+import { GlobalStyle, theme } from '@/styles';
 
 import { ThemeProvider } from '@emotion/react';
 
@@ -7,7 +9,12 @@ interface Props {
 }
 
 const Providers: React.FC<Props> = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      {children}
+      <GlobalStyle />
+    </ThemeProvider>
+  );
 };
 
 export default Providers;
