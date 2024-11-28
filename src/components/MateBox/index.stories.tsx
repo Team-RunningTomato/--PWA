@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import MateBox from '.';
 
 const meta: Meta<typeof MateBox> = {
+  title: 'Components/MateBox',
   component: MateBox,
   parameters: {
     layout: 'padded',
