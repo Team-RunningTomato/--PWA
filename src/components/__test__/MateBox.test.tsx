@@ -1,7 +1,5 @@
-import { RecruitBox } from '@/components';
+import { MateBox } from '@/components';
 import { renderWithEmotion } from '@/utils';
-
-import { screen } from '@testing-library/react';
 
 describe('RecruitBox Component', () => {
   test('RecruitBox Component', () => {
@@ -11,8 +9,8 @@ describe('RecruitBox Component', () => {
     const dateText = '1월 1일 월요일';
     const timeText = '오전 12시 00분';
 
-    const { container } = renderWithEmotion(
-      <RecruitBox
+    const { container, getByText } = renderWithEmotion(
+      <MateBox
         distance={distanceText}
         location={locationText}
         title={titleText}
@@ -21,13 +19,11 @@ describe('RecruitBox Component', () => {
       />
     );
 
-    expect(screen.getByText('1km')).toBeInTheDocument();
+    expect(getByText(`${distanceText}km`)).toBeInTheDocument();
+    expect(getByText(locationText)).toBeInTheDocument();
+    expect(getByText(titleText)).toBeInTheDocument();
 
-    expect(screen.getByText(locationText)).toBeInTheDocument();
-
-    expect(screen.getByText(titleText)).toBeInTheDocument();
-
-    expect(screen.getByText(`${dateText} / ${timeText}`)).toBeInTheDocument();
+    expect(getByText(`${dateText} / ${timeText}`)).toBeInTheDocument();
 
     expect(container.firstChild).toBeInTheDocument();
   });
