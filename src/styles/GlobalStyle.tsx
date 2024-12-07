@@ -61,6 +61,11 @@ export function GlobalStyle() {
           background: inherit;
           cursor: pointer;
         }
+
+        // storybook style
+        #storybook-root {
+          height: 100%;
+        }
       `}
     />
   );
