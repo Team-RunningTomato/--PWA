@@ -12,14 +12,17 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {
+      nextConfigPath: '../next.config.mjs',
+    },
   },
   docs: {
     autodocs: 'tag',
   },
   webpackFinal: async (config) => {
     if (config.resolve?.alias)
-      config.resolve.alias['@'] = path?.resolve(__dirname, '../src/');
+      config.resolve.alias['@'] = path?.resolve(__dirname, '../src');
+
     return config;
   },
   babel: async (config) => ({
@@ -36,5 +39,6 @@ const config: StorybookConfig = {
       ],
     ],
   }),
+  staticDirs: ['../public'],
 };
 export default config;
