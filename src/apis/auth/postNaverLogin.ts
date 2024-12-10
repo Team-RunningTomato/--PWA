@@ -33,7 +33,7 @@ const postNaverLogin = async (
     const tokenInfo = await response.json();
 
     return tokenInfo;
-  } catch (e) {
+  } catch {
     return undefined;
   }
 };
