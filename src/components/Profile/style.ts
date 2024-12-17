@@ -29,25 +29,27 @@ export const StatsContainer = styled.div`
   align-items: center;
 `;
 
-export const TextContainer = styled.div`
+export const StatItem = styled.div<{ border?: boolean }>`
   display: flex;
   padding: 0rem 0.5rem;
   justify-content: center;
   align-items: center;
-  border-right: 0.0625rem solid ${({ theme }) => theme.color.gray[100]};
+  ${({ border = true, theme }) =>
+    border && `border-right: 0.0625rem solid ${theme.color.gray[100]};`}
+
+  &:last-child {
+    border-right: none;
+  }
 `;
 
-export const HeightContainer = styled.div`
-  display: flex;
-  padding: 0rem 0.5rem;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Text = styled.p`
+const BaseStatText = styled.p`
   ${({ theme }) => theme.typo.caption1R};
   color: ${({ theme }) => theme.color.gray[300]};
 `;
+
+export const Level = styled(BaseStatText)``;
+export const Weight = styled(BaseStatText)``;
+export const Height = styled(BaseStatText)``;
 
 export const Button = styled.button`
   height: 1.5rem;

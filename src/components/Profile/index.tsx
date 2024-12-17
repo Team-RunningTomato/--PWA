@@ -13,12 +13,14 @@ interface ProfileProps {
   height: string;
 }
 
+const ImageSrc = '/imgs/ProfileImg.png';
+
 const Profile = ({ name, level, kg, height }: ProfileProps) => {
   return (
     <S.Wrapper>
       <S.ProfileContainer>
         <Image
-          src='/imgs/ProfileImg.png'
+          src={ImageSrc}
           alt='Profile Image'
           width={54}
           height={54}
@@ -27,17 +29,17 @@ const Profile = ({ name, level, kg, height }: ProfileProps) => {
         <S.UserInfoContainer>
           <S.Name>{name}</S.Name>
           <S.StatsContainer>
-            <S.TextContainer>
-              <S.Text>Lv {level}</S.Text>
-            </S.TextContainer>
+            <S.StatItem>
+              <S.Level>Lv {level}</S.Level>
+            </S.StatItem>
 
-            <S.TextContainer>
-              <S.Text>{kg}kg</S.Text>
-            </S.TextContainer>
+            <S.StatItem>
+              <S.Weight>{kg}kg</S.Weight>
+            </S.StatItem>
 
-            <S.HeightContainer>
-              <S.Text>{height}cm</S.Text>
-            </S.HeightContainer>
+            <S.StatItem border={false}>
+              <S.Height>{height}cm</S.Height>
+            </S.StatItem>
           </S.StatsContainer>
         </S.UserInfoContainer>
       </S.ProfileContainer>
