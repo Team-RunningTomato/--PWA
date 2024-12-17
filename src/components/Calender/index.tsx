@@ -114,7 +114,7 @@ const Calender: React.FC = () => {
 
         <S.DateContainer>
           <S.GreenLine style={getLineStyle()} />
-          {dates.map((d, idx) => (
+          {dates.map(({ date }, idx) => (
             <S.DateBox
               key={`date-${idx}`}
               onMouseDown={() => handleMouseDown(idx)}
@@ -125,7 +125,7 @@ const Calender: React.FC = () => {
               <S.DateText
                 isSelected={selectedIndex === idx || firstDraggedIndex === idx}
               >
-                {d.date}
+                {date}
               </S.DateText>
             </S.DateBox>
           ))}
