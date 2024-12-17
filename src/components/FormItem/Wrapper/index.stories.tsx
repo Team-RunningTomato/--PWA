@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Wrapper from '.';
 
 const meta: Meta<typeof Wrapper> = {
+  title: 'Components/Wrapper',
   component: Wrapper,
   parameters: {
     layout: 'padded',

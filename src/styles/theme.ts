@@ -107,6 +107,7 @@ const color = {
   black: '#1E1E1E',
   error: '#F82828',
   success: '#28F828',
+  naver: '#03C75A',
 };
 
 const theme = {

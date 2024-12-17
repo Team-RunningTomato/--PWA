@@ -1,9 +1,20 @@
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
 
 import React from 'react';
 
 import Providers from '../src/app/providers';
-import { GlobalStyle } from '../src/styles';
+
+const customViewports = {
+  'width 360px': {
+    name: 'width 360px',
+    styles: {
+      width: '360px',
+      height: '800px',
+    },
+  },
+  ...INITIAL_VIEWPORTS,
+};
 
 const preview: Preview = {
   parameters: {
@@ -14,11 +25,15 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    viewport: {
+      viewports: customViewports,
+      defaultViewport: 'width 360px',
+    },
   },
+
   decorators: [
     (Story) => (
       <Providers>
-        <GlobalStyle />
         <Story />
       </Providers>
     ),
