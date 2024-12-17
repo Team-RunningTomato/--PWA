@@ -8,7 +8,7 @@ interface DateItem {
 }
 
 const Calender: React.FC = () => {
-  const getDates = (): DateItem[] => {
+  const dates: DateItem[] = (() => {
     const dates: DateItem[] = [];
     const today = new Date();
 
@@ -20,10 +20,9 @@ const Calender: React.FC = () => {
         date: date.getDate(),
       });
     }
-    return dates;
-  };
 
-  const dates = getDates();
+    return dates;
+  })();
 
   const today = new Date().getDate();
   const todayIndex = dates.findIndex((d) => d.date === today);
