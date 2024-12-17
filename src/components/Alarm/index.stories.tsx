@@ -9,8 +9,8 @@ const meta: Meta<typeof Alarm> = {
     layout: 'padded',
   },
   args: {
-    title:
-      '김진원님의 “광주소프트웨어마이스터고등학교에서 런닝해요” 신청의 성공했습니다.',
+    name: '김진원',
+    title: '광주소프트웨어마이스터고등학교에서 런닝해요.',
     isApplied: true,
   },
 };
