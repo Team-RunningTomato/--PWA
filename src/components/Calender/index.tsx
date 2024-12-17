@@ -33,7 +33,7 @@ const Calender: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(todayIndex);
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const handleMouseDown = (index: number): void => {
+  const handleMouseDown = (index: number) => {
     const timeout = setTimeout(() => {
       setStartIndex(index);
       setEndIndex(index);
@@ -44,13 +44,13 @@ const Calender: React.FC = () => {
     setClickTimeout(timeout);
   };
 
-  const handleMouseEnter = (index: number): void => {
+  const handleMouseEnter = (index: number) => {
     if (isDragging) {
       setEndIndex(index);
     }
   };
 
-  const handleMouseUp = (index: number): void => {
+  const handleMouseUp = (index: number) => {
     if (!isDragging) {
       setSelectedIndex(index);
       setStartIndex(null);
