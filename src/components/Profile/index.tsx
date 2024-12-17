@@ -8,9 +8,12 @@ import * as S from './style';
 
 interface ProfileProps {
   name: string;
+  level: string;
+  kg: string;
+  height: string;
 }
 
-const Profile = ({ name }: ProfileProps) => {
+const Profile = ({ name, level, kg, height }: ProfileProps) => {
   return (
     <S.Wrapper>
       <S.ProfileContainer>
@@ -25,15 +28,15 @@ const Profile = ({ name }: ProfileProps) => {
           <S.Name>{name}</S.Name>
           <S.StatsContainer>
             <S.TextContainer>
-              <S.Text>Lv 1</S.Text>
+              <S.Text>Lv {level}</S.Text>
             </S.TextContainer>
 
             <S.TextContainer>
-              <S.Text>00kg</S.Text>
+              <S.Text>{kg}kg</S.Text>
             </S.TextContainer>
 
             <S.HeightContainer>
-              <S.Text>000cm</S.Text>
+              <S.Text>{height}cm</S.Text>
             </S.HeightContainer>
           </S.StatsContainer>
         </S.UserInfoContainer>

@@ -10,6 +10,9 @@ const meta: Meta<typeof Profile> = {
   },
   args: {
     name: '김진원',
+    level: '0',
+    kg: '00',
+    height: '000',
   },
 };
 
