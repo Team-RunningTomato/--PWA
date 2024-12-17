@@ -49,4 +49,6 @@ export const Text = styled.p`
   color: ${({ theme }) => theme.color.gray[300]};
 `;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+  height: 1.5rem;
+`;
