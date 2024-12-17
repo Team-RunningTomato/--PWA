@@ -31,12 +31,13 @@ export const DayOfWeekText = styled.p`
   color: ${({ theme }) => theme.color.gray[500]};
 `;
 
-export const GreenLine = styled.div`
+export const GreenLine = styled.div<{ left: string; width: string }>`
   position: absolute;
-  flex-grow: 1;
   height: 1.75rem;
   background-color: ${({ theme }) => theme.color.main[400]};
   border-radius: 1rem;
+  left: ${({ left }) => left};
+  width: ${({ width }) => width};
 `;
 
 export const DateContainer = styled.div`

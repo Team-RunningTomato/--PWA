@@ -80,8 +80,9 @@ const Calender: React.FC = () => {
     };
   }, [clickTimeout]);
 
-  const getLineStyle = () => {
-    if (startIndex === null || endIndex === null) return { display: 'none' };
+  const getLinePosition = () => {
+    if (startIndex === null || endIndex === null)
+      return { left: '0', width: '0' };
 
     const boxWidth = 1.75;
     const boxGap = 1.0;
@@ -113,7 +114,7 @@ const Calender: React.FC = () => {
         </S.DateContainer>
 
         <S.DateContainer>
-          <S.GreenLine style={getLineStyle()} />
+          <S.GreenLine {...getLinePosition()} />
           {dates.map(({ date }, idx) => (
             <S.DateBox
               key={`date-${idx}`}
