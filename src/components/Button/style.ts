@@ -7,7 +7,7 @@ export const Wrapper = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  background: ${({ theme }) => theme.color.main2[500]};
+  background: ${({ theme }) => theme.color.main2[800]};
   transition: background 0.3s ease;
 
   &:hover {
