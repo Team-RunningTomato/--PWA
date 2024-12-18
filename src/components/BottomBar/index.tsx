@@ -5,36 +5,22 @@ import { HomeIcon, JoinIcon, ProfileIcon, WingIcon } from '@/assets';
 import * as S from './style';
 
 const BottomBar = () => {
+  const menuItems = [
+    { icon: <HomeIcon />, text: '홈' },
+    { icon: <WingIcon />, text: '측정' },
+    { icon: <JoinIcon />, text: '모집' },
+    { icon: <ProfileIcon />, text: '내 정보' },
+  ];
+
   return (
     <S.Wrapper>
       <S.Container>
-        <S.IconContainer>
-          <S.IconBox>
-            <HomeIcon />
-          </S.IconBox>
-          <S.Text>홈</S.Text>
-        </S.IconContainer>
-
-        <S.IconContainer>
-          <S.IconBox>
-            <WingIcon />
-          </S.IconBox>
-          <S.Text>측정</S.Text>
-        </S.IconContainer>
-
-        <S.IconContainer>
-          <S.IconBox>
-            <JoinIcon />
-          </S.IconBox>
-          <S.Text>모집</S.Text>
-        </S.IconContainer>
-
-        <S.IconContainer>
-          <S.IconBox>
-            <ProfileIcon />
-          </S.IconBox>
-          <S.Text>내 정보</S.Text>
-        </S.IconContainer>
+        {menuItems.map((item, index) => (
+          <S.IconContainer key={index}>
+            <S.IconBox>{item.icon}</S.IconBox>
+            <S.Text>{item.text}</S.Text>
+          </S.IconContainer>
+        ))}
       </S.Container>
     </S.Wrapper>
   );
