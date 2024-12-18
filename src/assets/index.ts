@@ -11,3 +11,5 @@ export { default as RunningHallaeIcon } from './RunningHallaeIcon';
 export { default as RunningHallaeText } from './RunningHallaeText';
 export { default as SearchIcon } from './SearchIcon';
 export { default as AlarmIcon } from './AlarmIcon';
+export { default as BottomArrow } from './BottomArrow';
+export { default as TopArrow } from './TopArrow';
