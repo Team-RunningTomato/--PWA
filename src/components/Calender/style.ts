@@ -69,5 +69,5 @@ export const TodayText = styled.p`
   width: 1.75rem;
   text-align: center;
   ${({ theme }) => theme.typo.caption2B};
-  color: #1c1c1c;
+  color: ${({ theme }) => theme.color.main2[500]};
 `;

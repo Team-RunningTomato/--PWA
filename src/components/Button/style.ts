@@ -7,7 +7,7 @@ export const Wrapper = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  background: #1c1c1c; //추후 theme변경 시에 theme로 변경
+  background: ${({ theme }) => theme.color.main2[500]};
   transition: background 0.3s ease;
 
   &:hover {

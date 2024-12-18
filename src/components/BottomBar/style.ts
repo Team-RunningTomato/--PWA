@@ -32,5 +32,5 @@ export const IconBox = styled.div`
 
 export const Text = styled.p`
   ${({ theme }) => theme.typo.caption2R};
-  color: #1c1c1c;
+  color: ${({ theme }) => theme.color.main2[500]};
 `;
