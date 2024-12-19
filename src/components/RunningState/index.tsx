@@ -4,22 +4,11 @@ import {
   RunningShoesIcon,
   SwipeIcon,
 } from '@/assets';
+import RunningStateType from '@/types/runningStateType';
 
 import React, { useState } from 'react';
 
 import * as S from './style';
-
-interface RunningStateProps {
-  location: string;
-  intendKM: string;
-  title: string;
-  date: string;
-  LV: string;
-  distanceKM: string;
-  bestKM: string;
-  worstKM: string;
-  todayRunning: string[];
-}
 
 const RunningState = ({
   location,
@@ -31,7 +20,7 @@ const RunningState = ({
   bestKM,
   worstKM,
   todayRunning,
-}: RunningStateProps) => {
+}: RunningStateType) => {
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
