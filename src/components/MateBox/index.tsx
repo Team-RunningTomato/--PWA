@@ -3,18 +3,11 @@
 import Link from 'next/link';
 
 import { LocationIcon } from '@/assets';
+import MateBoxType from '@/types/mateBoxType';
 
 import * as S from './style';
 
-interface MateBoxProps {
-  distance: string;
-  location: string;
-  title: string;
-  date: string;
-  time: string;
-}
-
-const MateBox = ({ distance, location, title, date, time }: MateBoxProps) => {
+const MateBox = ({ distance, location, title, date, time }: MateBoxType) => {
   return (
     <Link href={''}>
       <S.Wrapper>

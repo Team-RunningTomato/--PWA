@@ -6,10 +6,14 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
 `;
 
-export const TitleText = styled.p`
+export const TitleText = styled.p<{ dragX: number }>`
+  text-align: center;
   width: 8.125rem;
   ${({ theme }) => theme.typo.body1B};
   color: ${({ theme }) => theme.color.black};
+  transform: ${({ dragX }) => `translateX(${dragX}px)`};
+  transition: ${({ dragX }) =>
+    dragX === 0 ? 'transform 0.3s ease-in-out' : 'none'};
 `;
 
 export const RunningStateContainer = styled.div`
@@ -54,6 +58,7 @@ export const LeftContent = styled.div<{
 }>`
   display: flex;
   height: 100%;
+  width: 8.125rem;
   padding: ${({ isRightPosition }) =>
     isRightPosition ? '1rem 0.5rem' : '2rem 1.5rem'};
   flex-direction: column;
