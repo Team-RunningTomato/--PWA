@@ -78,6 +78,7 @@ const typo = {
 
 const color = {
   main: {
+    700: '#B6F828',
     600: '#C2F94C',
     500: '#D3FB7E',
     400: '#E2FCA9',
