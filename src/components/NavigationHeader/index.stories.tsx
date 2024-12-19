@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TopBar from '.';
+import NavigationHeader from '.';
 
-const meta: Meta<typeof TopBar> = {
-  title: 'Components/TopBar',
-  component: TopBar,
+const meta: Meta<typeof NavigationHeader> = {
+  title: 'Components/NavigationHeader',
+  component: NavigationHeader,
   parameters: {
     layout: 'padded',
   },
@@ -16,6 +16,6 @@ const meta: Meta<typeof TopBar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof TopBar>;
+type Story = StoryObj<typeof NavigationHeader>;
 
 export const Primary: Story = {};

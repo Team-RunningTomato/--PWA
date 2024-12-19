@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   align-items: center;
-  gap: 3.75rem;
+  justify-content: center;
 `;
 
 export const Text = styled.h1`
@@ -13,5 +14,7 @@ export const Text = styled.h1`
 `;
 
 export const Button = styled.button`
+  position: absolute;
   height: 2.25rem;
+  left: 0;
 `;
