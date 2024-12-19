@@ -7,8 +7,7 @@ import {
   SelectFilter,
   TopBar,
 } from '@/components';
-import MateBoxType from '@/types/mateBoxType';
-import RunningStateType from '@/types/runningStateType';
+import { MateBoxType, RunningStateType } from '@/types';
 
 import * as S from './style';
 
@@ -30,14 +29,7 @@ const MainPage = ({ recruitData, runningState }: MainPageProps) => {
           </S.RecruitContainer>
           <S.RecruitBox>
             {recruitData.map((item, index) => (
-              <MateBox
-                key={index}
-                distance={item.distance}
-                location={item.location}
-                title={item.title}
-                date={item.date}
-                time={item.time}
-              />
+              <MateBox key={index} {...item} />
             ))}
           </S.RecruitBox>
         </S.RecruitWrapper>

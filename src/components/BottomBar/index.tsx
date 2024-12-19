@@ -24,13 +24,10 @@ const BottomBar = () => {
     <S.Wrapper>
       <S.Container>
         <S.Box>
-          {menuItems.map((item, index) => (
-            <S.IconContainer
-              key={index}
-              onClick={() => handleNavigation(item.path)}
-            >
-              <S.IconBox>{item.icon}</S.IconBox>
-              <S.Text>{item.text}</S.Text>
+          {menuItems.map(({ icon, text, path }, index) => (
+            <S.IconContainer key={index} onClick={() => handleNavigation(path)}>
+              <S.IconBox>{icon}</S.IconBox>
+              <S.Text>{text}</S.Text>
             </S.IconContainer>
           ))}
         </S.Box>

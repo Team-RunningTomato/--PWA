@@ -1,2 +1,2 @@
-export type { default as runningStateType } from './runningStateType';
-export type { default as mateBoxType } from './mateBoxType';
+export type { default as RunningStateType } from './runningStateType';
+export type { default as MateBoxType } from './mateBoxType';
