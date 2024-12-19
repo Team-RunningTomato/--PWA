@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TitleText = styled.p`
+  text-align: center;
   width: 8.125rem;
   ${({ theme }) => theme.typo.body1B};
   color: ${({ theme }) => theme.color.black};
@@ -54,6 +55,7 @@ export const LeftContent = styled.div<{
 }>`
   display: flex;
   height: 100%;
+  width: 8.125rem;
   padding: ${({ isRightPosition }) =>
     isRightPosition ? '1rem 0.5rem' : '2rem 1.5rem'};
   flex-direction: column;
