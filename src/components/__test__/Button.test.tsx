@@ -1,5 +1,5 @@
 import { Button } from '@/components';
-import { renderWithEmotion } from '@/utils';
+import renderWithEmotion from '@/utils/renderWithEmotion';
 
 describe('Button Component', () => {
   test('text 확인', () => {

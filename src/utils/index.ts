@@ -1,1 +1,1 @@
-export { default as renderWithEmotion } from './renderWithEmotion';
+export { default as getCookie } from './getCookie';

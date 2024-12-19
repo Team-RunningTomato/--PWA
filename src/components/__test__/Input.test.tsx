@@ -1,5 +1,5 @@
 import { Input } from '@/components';
-import { renderWithEmotion } from '@/utils';
+import renderWithEmotion from '@/utils/renderWithEmotion';
 
 import { useForm } from 'react-hook-form';
 

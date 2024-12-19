@@ -1,5 +1,5 @@
 import { Wrapper } from '@/components';
-import { renderWithEmotion } from '@/utils';
+import renderWithEmotion from '@/utils/renderWithEmotion';
 
 describe('Wrapper Component', () => {
   test('Success Case', () => {
