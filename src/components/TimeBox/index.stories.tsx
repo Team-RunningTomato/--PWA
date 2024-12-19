@@ -8,7 +8,6 @@ const meta: Meta<typeof TimeBox> = {
   parameters: {
     layout: 'padded',
   },
-  args: {},
 };
 
 export default meta;
