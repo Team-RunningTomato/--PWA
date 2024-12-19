@@ -1,2 +1,2 @@
-export { default as filterModalStore } from './filterModalStore';
+export { default as bottomSheetStore } from './bottomSheetStore';
 export { default as periodStore } from './periodStore';

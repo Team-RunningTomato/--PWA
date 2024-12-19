@@ -1,28 +1,28 @@
 'use client';
 
 import { BottomArrow, TopArrow } from '@/assets';
-import useFilterModalStore from '@/stores/filterModalStore';
+import useBottomSheetStore from '@/stores/bottomSheetStore';
 import usePeriodStore from '@/stores/periodStore';
 
-import FilterModal from '../FilterModal';
+import FilterBottomSheet from '../FilterBottomSheet';
 import * as S from './style';
 
 const SelectFilter = () => {
   const { sortPeriod } = usePeriodStore();
-  const { isFilterModalOpen, openFilterModal } = useFilterModalStore();
+  const { isBottomSheetOpen, openBottomSheet } = useBottomSheetStore();
 
   return (
     <>
       <S.Wrapper
-        onClick={openFilterModal}
-        isFilterModalOpen={isFilterModalOpen}
+        onClick={openBottomSheet}
+        isBottomSheetOpen={isBottomSheetOpen}
       >
-        <S.Text isFilterModalOpen={isFilterModalOpen}>
+        <S.Text isBottomSheetOpen={isBottomSheetOpen}>
           {sortPeriod === 'latest' ? '최신 순' : '오래된 순'}
         </S.Text>
-        {isFilterModalOpen ? <TopArrow /> : <BottomArrow />}
+        {isBottomSheetOpen ? <TopArrow /> : <BottomArrow />}
       </S.Wrapper>
-      {isFilterModalOpen && <FilterModal />}
+      {isBottomSheetOpen && <FilterBottomSheet />}
     </>
   );
 };

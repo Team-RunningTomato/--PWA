@@ -1,17 +1,17 @@
 'use client';
 
-import useFilterModalStore from '@/stores/filterModalStore';
+import useBottomSheetStore from '@/stores/bottomSheetStore';
 import usePeriodStore from '@/stores/periodStore';
 
 import * as S from './style';
 
-const FilterModal = () => {
-  const { closeFilterModal } = useFilterModalStore();
+const FilterBottomSheet = () => {
+  const { closeBottomSheet } = useBottomSheetStore();
   const { setSortPeriod } = usePeriodStore();
 
   return (
     <S.Backdrop>
-      <S.Wrapper onClick={closeFilterModal}>
+      <S.Wrapper onClick={closeBottomSheet}>
         <S.Options onClick={() => setSortPeriod('latest')}>
           <S.Text>최신순</S.Text>
         </S.Options>
@@ -28,4 +28,4 @@ const FilterModal = () => {
   );
 };
 
-export default FilterModal;
+export default FilterBottomSheet;
