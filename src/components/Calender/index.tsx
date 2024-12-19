@@ -1,3 +1,5 @@
+import useDateStore from '@/stores/dateStore';
+
 import React, { useEffect, useState } from 'react';
 
 import * as S from './style';
@@ -8,6 +10,8 @@ interface DateItem {
 }
 
 const Calender: React.FC = () => {
+  const { setSelectedDates } = useDateStore();
+
   const dates: DateItem[] = (() => {
     const dates: DateItem[] = [];
     const today = new Date();
@@ -55,6 +59,14 @@ const Calender: React.FC = () => {
       setSelectedIndex(index);
       setStartIndex(null);
       setEndIndex(null);
+    } else {
+      const minIndex = Math.min(startIndex ?? 0, index);
+      const maxIndex = Math.max(startIndex ?? 0, index);
+      const selectedDates = dates
+        .slice(minIndex, maxIndex + 1)
+        .map((d) => d.date);
+
+      setSelectedDates(selectedDates);
     }
 
     setIsDragging(false);
