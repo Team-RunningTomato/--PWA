@@ -16,11 +16,7 @@ const TimeBox = () => {
 
     if (Number(value) > max) value = max.toString();
 
-    if (value.length === 1) {
-      value = value.padStart(2, '0').slice(-2);
-    } else if (value.length > 2) {
-      value = value.slice(-2);
-    }
+    value = value.padStart(2, '0').slice(-2);
 
     e.currentTarget.value = value;
     return value ? Number(value) : null;
