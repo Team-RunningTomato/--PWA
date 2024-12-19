@@ -1,12 +1,18 @@
 import { z } from 'zod';
 
-const numberFormat = z
-  .number({ invalid_type_error: '숫자를 입력해주세요.' })
-  .int('소수점은 빼고 입력해주세요.');
-
 const bodyInfoSchema = z.object({
-  weight: numberFormat,
-  height: numberFormat,
+  weight: z
+    .number({
+      invalid_type_error: '몸무게를 입력해주세요.',
+      required_error: '몸무게를 입력해주세요',
+    })
+    .int('소수점은 빼고 입력해주세요.'),
+  height: z
+    .number({
+      invalid_type_error: '키를 입력해주세요.',
+      required_error: '키를 입력해주세요',
+    })
+    .int('소수점은 빼고 입력해주세요.'),
 });
 
 export default bodyInfoSchema;
