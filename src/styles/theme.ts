@@ -74,7 +74,7 @@ const typo = {
     lineHeight: '150%',
     fontWeight: 400,
   },
-};
+} as const;
 
 const color = {
   main: {
@@ -115,11 +115,11 @@ const color = {
   error: '#F82828',
   success: '#28F828',
   naver: '#03C75A',
-};
+} as const;
 
 const theme = {
   typo,
   color,
-};
+} as const;
 
 export default theme;
