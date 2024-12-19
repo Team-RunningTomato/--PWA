@@ -13,8 +13,8 @@ export const Text = styled.h1`
   color: ${({ theme }) => theme.color.black};
 `;
 
-export const Button = styled.button`
+export const LinkContainer = styled.div`
   position: absolute;
-  height: 2.25rem;
   left: 0;
+  height: 2.25rem;
 `;

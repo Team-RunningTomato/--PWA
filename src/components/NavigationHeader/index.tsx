@@ -1,23 +1,24 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import { LeftArrow } from '@/assets';
+import { BackArrowIcon } from '@/assets';
 
 import * as S from './style';
 
 interface HeaderProps {
   navigateUrl: string;
-  title: string;
+  title: string | undefined;
 }
 
 const NavigationHeader = ({ navigateUrl, title }: HeaderProps) => {
-  const { push } = useRouter();
   return (
     <S.Wrapper>
-      <S.Button onClick={() => push(navigateUrl)}>
-        <LeftArrow />
-      </S.Button>
+      <S.LinkContainer>
+        <Link href={navigateUrl}>
+          <BackArrowIcon />
+        </Link>
+      </S.LinkContainer>
       <S.Text>{title}</S.Text>
     </S.Wrapper>
   );
