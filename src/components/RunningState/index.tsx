@@ -74,7 +74,9 @@ const RunningState = ({
 
   return (
     <S.Wrapper>
-      <S.TitleText>런닝 레벨</S.TitleText>
+      <S.TitleText dragX={dragX}>
+        {isRightPosition ? '신청 목록' : '런닝 레벨'}
+      </S.TitleText>
       <S.RunningStateContainer>
         <S.SwipeContainer>
           <S.SwipeBox>

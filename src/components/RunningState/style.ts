@@ -6,11 +6,14 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
 `;
 
-export const TitleText = styled.p`
+export const TitleText = styled.p<{ dragX: number }>`
   text-align: center;
   width: 8.125rem;
   ${({ theme }) => theme.typo.body1B};
   color: ${({ theme }) => theme.color.black};
+  transform: ${({ dragX }) => `translateX(${dragX}px)`};
+  transition: ${({ dragX }) =>
+    dragX === 0 ? 'transform 0.3s ease-in-out' : 'none'};
 `;
 
 export const RunningStateContainer = styled.div`
