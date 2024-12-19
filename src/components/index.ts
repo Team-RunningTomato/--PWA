@@ -8,3 +8,4 @@ export { default as TopBar } from './TopBar';
 export { default as BottomBar } from './BottomBar';
 export { default as RunningState } from './RunningState';
 export { default as FilterBottomSheet } from './FilterBottomSheet';
+export { default as SelectFilter } from './SelectFilter';
