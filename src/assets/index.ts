@@ -16,3 +16,4 @@ export { default as AlarmIcon } from './AlarmIcon';
 export { default as BottomArrow } from './BottomArrow';
 export { default as TopArrow } from './TopArrow';
 export { default as RightGreenArrow } from './RightGreenArrow';
+export { default as BackArrowIcon } from './BackArrowIcon';
