@@ -1,8 +1,13 @@
 import { create } from 'zustand';
 
+interface DateItem {
+  month: number;
+  date: number;
+}
+
 interface DateStoreType {
-  selectedDates: number[];
-  setSelectedDates: (dates: number[]) => void;
+  selectedDates: DateItem[];
+  setSelectedDates: (dates: DateItem[]) => void;
 }
 
 const useDateStore = create<DateStoreType>((set) => ({
