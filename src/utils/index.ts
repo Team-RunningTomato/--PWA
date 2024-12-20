@@ -1,1 +1,1 @@
-export { default as renderWithEmotion } from './renderWithEmotion';
+export { default as formatTime } from './formatTime';
