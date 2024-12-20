@@ -1,4 +1,4 @@
-const formatTime = (isoTime: string) => {
+const formatDate = (isoTime: string) => {
   const date = new Date(isoTime);
 
   const optionsForDate = {
@@ -25,4 +25,4 @@ const formatTime = (isoTime: string) => {
   return `${formattedDate} / ${timeWithKoreanFormat.replace(':', '시 ')}분`;
 };
 
-export default formatTime;
+export default formatDate;

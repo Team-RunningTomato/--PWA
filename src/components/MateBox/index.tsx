@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { LocationIcon } from '@/assets';
 import MateBoxType from '@/types/mateBoxType';
-import { formatTime } from '@/utils';
+import { formatDate } from '@/utils';
 
 import * as S from './style';
 
@@ -23,7 +23,7 @@ const MateBox = ({ distance, location, title, time }: MateBoxType) => {
             </S.RunningInfoBox>
             <S.Title>{title}</S.Title>
           </S.MainBox>
-          <S.TimeText>{formatTime(time)}</S.TimeText>
+          <S.TimeText>{formatDate(time)}</S.TimeText>
         </S.Container>
       </S.Wrapper>
     </Link>
