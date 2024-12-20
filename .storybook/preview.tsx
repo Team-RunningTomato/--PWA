@@ -18,6 +18,7 @@ const customViewports = {
 
 const preview: Preview = {
   parameters: {
+    layout: 'fullscreen',
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
@@ -28,6 +29,9 @@ const preview: Preview = {
     viewport: {
       viewports: customViewports,
       defaultViewport: 'width 360px',
+    },
+    nextjs: {
+      appDirectory: true,
     },
   },
 

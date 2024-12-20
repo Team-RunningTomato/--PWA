@@ -66,6 +66,16 @@ export function GlobalStyle() {
         #storybook-root {
           height: 100%;
         }
+
+        // input type number일때 화살표 제거
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type='number'] {
+          -moz-appearance: textfield;
+        }
       `}
     />
   );

@@ -1,4 +1,4 @@
-import { authUrl } from '@/libs';
+import { authUrls } from '@/libs';
 
 interface ResponseType {
   grantType: string;
@@ -19,7 +19,7 @@ const postNaverLogin = async (
     });
 
     const response = await fetch(
-      new URL(authUrl.postNaverLogin(), process.env.NEXT_PUBLIC_API_BASE_URL),
+      new URL(authUrls.postNaverLogin(), process.env.NEXT_PUBLIC_API_BASE_URL),
       {
         headers: {
           Accept: 'application/json',
