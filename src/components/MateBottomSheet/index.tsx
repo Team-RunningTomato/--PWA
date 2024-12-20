@@ -1,12 +1,12 @@
 'use client';
 
 import { Button, Calender, TimeBox } from '@/components';
-import usePromiseSheetStore from '@/stores/pomiseSheetStore';
+import { useMateSheetStore } from '@/stores';
 
 import * as S from './style';
 
-const PromiseBottomSheet = () => {
-  const { closePromiseSheet } = usePromiseSheetStore();
+const MateBottomSheet = () => {
+  const { closeMateSheet } = useMateSheetStore();
 
   return (
     <S.Backdrop>
@@ -16,11 +16,11 @@ const PromiseBottomSheet = () => {
             <Calender />
             <TimeBox />
           </S.Box>
-          <Button title={'확인'} onClick={closePromiseSheet} />
+          <Button title={'확인'} onClick={closeMateSheet} />
         </S.Container>
       </S.Wrapper>
     </S.Backdrop>
   );
 };
 
-export default PromiseBottomSheet;
+export default MateBottomSheet;

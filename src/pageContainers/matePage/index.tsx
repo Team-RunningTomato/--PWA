@@ -1,18 +1,14 @@
 'use client';
 
 import { DetailLocationIcon } from '@/assets';
-import {
-  Button,
-  Input,
-  NavigationHeader,
-  PromiseBottomSheet,
-} from '@/components';
-import usePromiseSheetStore from '@/stores/pomiseSheetStore';
+import { Button, Input, MateBottomSheet, NavigationHeader } from '@/components';
+import { useMateSheetStore } from '@/stores';
 
 import * as S from './style';
 
 const MatePage = () => {
-  const { isPromiseSheetOpen, openPromiseSheet } = usePromiseSheetStore();
+  const { isMateSheetOpen, openMateSheet } = useMateSheetStore();
+
   return (
     <>
       <NavigationHeader navigateUrl={'/'} title={'런닝 모집하기'} />
@@ -33,15 +29,18 @@ const MatePage = () => {
         />
         <S.ButtonContainer>
           <S.Title>약속</S.Title>
-          <S.Button onClick={openPromiseSheet}>
-            만날 시간을 입력해주세요.
-          </S.Button>
+          <S.Button onClick={openMateSheet}>만날 시간을 입력해주세요.</S.Button>
         </S.ButtonContainer>
         <S.ButtonWrapper>
-          <Button title={'확인'} />
+          <Button
+            title={'확인'}
+            onClick={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
         </S.ButtonWrapper>
       </S.Wrapper>
-      {isPromiseSheetOpen && <PromiseBottomSheet />}
+      {isMateSheetOpen && <MateBottomSheet />}
     </>
   );
 };

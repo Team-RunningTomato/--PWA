@@ -1,6 +1,6 @@
 'use client';
 
-import useTimeStore from '@/stores/timeStore';
+import { useTimeStore } from '@/stores';
 
 import * as S from './style';
 

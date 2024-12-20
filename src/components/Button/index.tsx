@@ -4,7 +4,7 @@ import * as S from './style';
 
 interface Props {
   title: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const Button: React.FC<Props> = ({ title, onClick }) => {
