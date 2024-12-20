@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+  height: 2.75rem;
 `;
 
 export const Text = styled.h1`

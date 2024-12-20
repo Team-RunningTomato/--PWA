@@ -6,4 +6,11 @@ const withPWA = withPWAInit({
   skipWaiting: true,
 });
 
-export default withPWA({});
+export default withPWA({
+  rewrites: async () => [
+    {
+      source: '/api:path*',
+      destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}:path*`,
+    },
+  ],
+});

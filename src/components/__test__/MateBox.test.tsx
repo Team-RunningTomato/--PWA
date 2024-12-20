@@ -1,5 +1,5 @@
 import { MateBox } from '@/components';
-import { renderWithEmotion } from '@/utils';
+import renderWithEmotion from '@/utils/renderWithEmotion';
 
 describe('RecruitBox Component', () => {
   test('RecruitBox Component', () => {

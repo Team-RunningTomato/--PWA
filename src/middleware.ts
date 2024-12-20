@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import { postNaverLogin } from '@/apis';
+import { Path } from '@/types';
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
@@ -12,7 +13,8 @@ export async function middleware(request: NextRequest) {
 
   const tokenInfo = await postNaverLogin(authorizationCode, state);
 
-  if (!tokenInfo) return NextResponse.redirect(new URL('/login', request.url));
+  if (!tokenInfo)
+    return NextResponse.redirect(new URL(Path.LOGIN, request.url));
 
   response.cookies.set({
     name: 'accessToken',
@@ -29,5 +31,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/login',
+  matcher: Path.LOGIN,
 };

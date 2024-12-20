@@ -3,16 +3,26 @@
 import { GlobalStyle, theme } from '@/styles';
 
 import { ThemeProvider } from '@emotion/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { PropsWithChildren } from 'react';
 
-interface Props {
-  children: React.ReactNode;
-}
+const Providers = ({ children }: PropsWithChildren) => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
 
-const Providers: React.FC<Props> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      {children}
-      <GlobalStyle />
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <GlobalStyle />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };

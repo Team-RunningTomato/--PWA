@@ -1,3 +1,5 @@
+import { SearchIcon } from '@/assets';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Input from '.';
@@ -30,5 +32,17 @@ export const Error: Story = {
 export const Success: Story = {
   args: {
     successMessage: 'Success Message',
+  },
+};
+
+export const Unit: Story = {
+  args: {
+    unit: 'kg',
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    icon: <SearchIcon />,
   },
 };
