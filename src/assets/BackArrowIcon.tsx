@@ -1,5 +1,3 @@
-import React from 'react';
-
 const BackArrowIcon = () => (
   <svg
     width='2.25rem'
