@@ -9,3 +9,4 @@ export { default as BottomBar } from './BottomBar';
 export { default as RunningState } from './RunningState';
 export { default as FilterBottomSheet } from './FilterBottomSheet';
 export { default as SelectFilter } from './SelectFilter';
+export { default as NavigationHeader } from './NavigationHeader';

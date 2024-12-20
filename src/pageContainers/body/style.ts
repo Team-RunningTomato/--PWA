@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
 
 export const Container = styled.form`
   width: 100%;
@@ -7,18 +6,7 @@ export const Container = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 1rem;
-`;
-
-export const Header = styled.header`
-  width: 100%;
-  margin-top: 2rem;
-  display: flex;
-`;
-
-export const BackButton = styled(Link)`
-  height: 2.25rem;
-  width: 2.25rem;
+  padding: 1.75rem 1rem 0 1rem;
 `;
 
 export const MiddleBox = styled.div`

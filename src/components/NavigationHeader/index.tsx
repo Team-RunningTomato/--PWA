@@ -8,7 +8,7 @@ import * as S from './style';
 
 interface HeaderProps {
   navigateUrl: string;
-  title: string | undefined;
+  title?: string;
 }
 
 const NavigationHeader = ({ navigateUrl, title }: HeaderProps) => {

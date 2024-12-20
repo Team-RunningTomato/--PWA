@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { BackArrowIcon } from '@/assets';
 import { Input } from '@/components';
+import { NavigationHeader } from '@/components';
 import { usePatchMyBodyInfo } from '@/hooks';
 import { bodyInfoSchema } from '@/schemas';
 import { BodyInfoFormType } from '@/types';
@@ -48,11 +48,7 @@ const BodyPage = () => {
 
   return (
     <S.Container onSubmit={handleSubmit(handleFormSubmit)} noValidate>
-      <S.Header>
-        <S.BackButton href={Path.LOGIN}>
-          <BackArrowIcon />
-        </S.BackButton>
-      </S.Header>
+      <NavigationHeader navigateUrl={Path.LOGIN} />
 
       <S.MiddleBox>
         <S.ImageWrapper>
