@@ -5,8 +5,17 @@ import { useMateSheetStore } from '@/stores';
 
 import * as S from './style';
 
-const MateBottomSheet = () => {
+interface MateBottomSheet {
+  onClick: () => void;
+}
+
+const MateBottomSheet = ({ onClick }: MateBottomSheet) => {
   const { closeMateSheet } = useMateSheetStore();
+
+  const MateSheetHandler = () => {
+    onClick();
+    closeMateSheet();
+  };
 
   return (
     <S.Backdrop>
@@ -16,7 +25,7 @@ const MateBottomSheet = () => {
             <Calender />
             <TimeBox />
           </S.Box>
-          <Button title={'확인'} onClick={closeMateSheet} />
+          <Button title={'확인'} onClick={MateSheetHandler} />
         </S.Container>
       </S.Wrapper>
     </S.Backdrop>
