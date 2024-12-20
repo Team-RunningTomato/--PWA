@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useTimeStore } from '@/stores';
 
 import * as S from './style';
 
 const TimeBox = () => {
-  const [AMPM, setAMPM] = useState<'AM' | 'PM' | null>(null);
-  const [hour, setHour] = useState<number | null>(null);
+  const { AMPM, hour, setAMPM, setHour, setMinute } = useTimeStore();
 
   const handleNumberInput = (
     e: React.FormEvent<HTMLInputElement>,
@@ -29,7 +28,8 @@ const TimeBox = () => {
 
   const handleMinuteInput = (e: React.FormEvent<HTMLInputElement>) => {
     const max = hour === 12 ? 0 : 59;
-    handleNumberInput(e, max);
+    const value = handleNumberInput(e, max);
+    setMinute(value);
   };
 
   return (
