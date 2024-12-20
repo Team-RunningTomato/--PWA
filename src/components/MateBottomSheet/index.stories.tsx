@@ -8,7 +8,6 @@ const meta: Meta<typeof MateBottomSheet> = {
   parameters: {
     layout: 'padded',
   },
-  args: {},
 };
 
 export default meta;
