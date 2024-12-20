@@ -64,10 +64,10 @@ const MatePage = () => {
         <S.InputContainer>
           <Input
             inputTitle='장소'
-            placeholder='상세 주소를 알려주세요.'
+            placeholder='위치를 알려주세요.'
             icon={<DetailLocationIcon />}
           />
-          <Input placeholder='장소를 알려주세요.' />
+          <Input placeholder='상세주소를 알려주세요.' />
         </S.InputContainer>
         <Input
           inputTitle='거리'
