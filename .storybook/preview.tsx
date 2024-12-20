@@ -30,6 +30,9 @@ const preview: Preview = {
       viewports: customViewports,
       defaultViewport: 'width 360px',
     },
+    nextjs: {
+      appDirectory: true,
+    },
   },
 
   decorators: [
