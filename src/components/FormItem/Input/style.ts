@@ -45,7 +45,19 @@ export const Unit = styled.p`
   height: 1.25rem;
   ${({ theme }) => theme.typo.caption1B};
   color: ${({ theme }) => theme.color.gray[500]};
-  top: 0.88rem;
+  top: 50%;
+  transform: translateY(-50%);
   right: 1.12rem;
+  position: absolute;
+`;
+
+export const Icon = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  top: 0.88rem;
+  top: 50%;
+  right: 1.12rem;
+  transform: translateY(-50%);
   position: absolute;
 `;

@@ -2,7 +2,7 @@
 
 import { Wrapper } from '@/components';
 
-import { forwardRef } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 import * as S from './style';
 
@@ -11,10 +11,14 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
   successMessage?: string;
   unit?: string;
+  icon?: ReactNode;
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ inputTitle, errorMessage, successMessage, unit, ...attributes }, ref) => (
+  (
+    { inputTitle, errorMessage, successMessage, unit, icon, ...attributes },
+    ref
+  ) => (
     <Wrapper
       title={inputTitle}
       errorMessage={errorMessage}
@@ -27,7 +31,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           isSuccess={!!successMessage}
           {...attributes}
         />
-        {!!unit && <S.Unit>{unit}</S.Unit>}
+        {!!unit ? <S.Unit>{unit}</S.Unit> : !!icon && <S.Icon>{icon}</S.Icon>}
       </S.Container>
     </Wrapper>
   )
