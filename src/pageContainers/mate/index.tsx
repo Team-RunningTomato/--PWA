@@ -65,14 +65,14 @@ const MatePage = () => {
           <Input
             inputTitle='장소'
             placeholder='상세 주소를 알려주세요.'
-            rightArea={<DetailLocationIcon />}
+            icon={<DetailLocationIcon />}
           />
           <Input placeholder='장소를 알려주세요.' />
         </S.InputContainer>
         <Input
           inputTitle='거리'
           placeholder='런닝 거리 입력해주세요.'
-          rightArea={<S.RightText>km</S.RightText>}
+          unit={'km'}
         />
         <S.ButtonContainer>
           <S.Title>약속</S.Title>

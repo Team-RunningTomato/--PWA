@@ -14,7 +14,6 @@ const meta: Meta<typeof Input> = {
     inputTitle: 'Input Title',
     errorMessage: '',
     placeholder: '테스트입니다.',
-    rightArea: <>test</>,
   },
 };
 
