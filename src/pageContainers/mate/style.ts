@@ -48,9 +48,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  display: inline;
   ${({ theme }) => theme.typo.body1B}
   color: ${({ theme }) => theme.color.black};
+  display: inline;
   margin-bottom: 0.375rem;
 `;
 
