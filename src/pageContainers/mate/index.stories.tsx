@@ -5,9 +5,6 @@ import MatePage from '.';
 const meta: Meta<typeof MatePage> = {
   title: 'Pages/Mate',
   component: MatePage,
-  parameters: {
-    layout: 'padded',
-  },
 };
 
 export default meta;
