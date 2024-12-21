@@ -16,9 +16,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  z-index: 10;
   background: ${({ theme }) => theme.color.white};
   border-top: 0.0625rem solid ${({ theme }) => theme.color.gray[100]};
 `;
