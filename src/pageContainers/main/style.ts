@@ -13,7 +13,15 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const Box = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
+  padding: 1rem 1rem 0 1rem;
 `;
 
 export const RecruitWrapper = styled.div`
@@ -21,7 +29,6 @@ export const RecruitWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-bottom: 4.5rem;
 `;
 
 export const RecruitContainer = styled.div`
@@ -39,4 +46,6 @@ export const RecruitBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  height: 17.5rem;
+  overflow: scroll;
 `;
