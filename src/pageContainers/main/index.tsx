@@ -20,21 +20,23 @@ const MainPage = ({ recruitData, runningState }: MainPageProps) => {
   return (
     <S.Wrapper>
       <S.Container>
-        <TopBar />
-        <RunningState {...runningState} />
-        <S.RecruitWrapper>
-          <S.RecruitContainer>
-            <S.RecruitText>런닝 모집</S.RecruitText>
-            <SelectFilter />
-          </S.RecruitContainer>
-          <S.RecruitBox>
-            {recruitData.map((item, index) => (
-              <MateBox key={index} {...item} />
-            ))}
-          </S.RecruitBox>
-        </S.RecruitWrapper>
+        <S.Box>
+          <TopBar />
+          <RunningState {...runningState} />
+          <S.RecruitWrapper>
+            <S.RecruitContainer>
+              <S.RecruitText>런닝 모집</S.RecruitText>
+              <SelectFilter />
+            </S.RecruitContainer>
+            <S.RecruitBox>
+              {recruitData.map((item, index) => (
+                <MateBox key={index} {...item} />
+              ))}
+            </S.RecruitBox>
+          </S.RecruitWrapper>
+        </S.Box>
+        <BottomBar />
       </S.Container>
-      <BottomBar />
     </S.Wrapper>
   );
 };

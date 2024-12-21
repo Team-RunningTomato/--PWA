@@ -1,3 +1,5 @@
+'use client';
+
 import { useDateStore } from '@/stores';
 
 import React, { useEffect, useState } from 'react';
