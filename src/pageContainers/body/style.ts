@@ -10,7 +10,7 @@ export const Container = styled.form`
 `;
 
 export const MiddleBox = styled.div`
-  margin-top: 5rem;
+  margin-top: 7.5rem;
   display: flex;
   flex-direction: column;
   width: 100%;

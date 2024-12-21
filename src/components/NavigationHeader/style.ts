@@ -1,6 +1,23 @@
 import styled from '@emotion/styled';
 
+export const PositionWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  padding: 1rem;
+`;
+
+export const Container = styled.div`
   position: relative;
   display: flex;
   width: 100%;

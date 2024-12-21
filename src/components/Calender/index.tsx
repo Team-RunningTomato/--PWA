@@ -1,4 +1,4 @@
-import useDateStore from '@/stores/dateStore';
+import { useDateStore } from '@/stores';
 
 import React, { useEffect, useState } from 'react';
 
@@ -37,6 +37,14 @@ const Calender: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(todayIndex);
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    const selectedDate = {
+      month: new Date().getMonth() + 1,
+      date: today,
+    };
+    setSelectedDates([selectedDate]);
+  }, [setSelectedDates, today]);
+
   const handleMouseDown = (index: number) => {
     const timeout = setTimeout(() => {
       setStartIndex(index);
@@ -59,12 +67,21 @@ const Calender: React.FC = () => {
       setSelectedIndex(index);
       setStartIndex(null);
       setEndIndex(null);
+
+      const selectedDate = {
+        month: new Date().getMonth() + 1,
+        date: dates[index].date,
+      };
+      setSelectedDates([selectedDate]);
     } else {
       const minIndex = Math.min(startIndex ?? 0, index);
       const maxIndex = Math.max(startIndex ?? 0, index);
       const selectedDates = dates
         .slice(minIndex, maxIndex + 1)
-        .map((d) => d.date);
+        .map(({ date }) => ({
+          month: new Date().getMonth() + 1,
+          date,
+        }));
 
       setSelectedDates(selectedDates);
     }
