@@ -76,10 +76,12 @@ const Calender: React.FC = () => {
     } else {
       const minIndex = Math.min(startIndex ?? 0, index);
       const maxIndex = Math.max(startIndex ?? 0, index);
-      const selectedDates = dates.slice(minIndex, maxIndex + 1).map((d) => ({
-        month: new Date().getMonth() + 1,
-        date: d.date,
-      }));
+      const selectedDates = dates
+        .slice(minIndex, maxIndex + 1)
+        .map(({ date }) => ({
+          month: new Date().getMonth() + 1,
+          date,
+        }));
 
       setSelectedDates(selectedDates);
     }
