@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "types": ["@types/jest"],
+    "types": ["@types/jest", "kakao.maps.d.ts"],
     "incremental": true,
     "plugins": [
       {

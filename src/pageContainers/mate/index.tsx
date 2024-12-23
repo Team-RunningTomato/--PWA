@@ -3,6 +3,7 @@
 import { DetailLocationIcon } from '@/assets';
 import { Button, Input, MateBottomSheet, NavigationHeader } from '@/components';
 import { useDateStore, useMateSheetStore, useTimeStore } from '@/stores';
+import { Path } from '@/types';
 
 import { useState } from 'react';
 
@@ -58,7 +59,7 @@ const MatePage = () => {
 
   return (
     <>
-      <NavigationHeader navigateUrl={'/'} title={'런닝 모집하기'} />
+      <NavigationHeader navigateUrl={Path.MAIN} title={'런닝 모집하기'} />
       <S.Wrapper>
         <Input inputTitle='제목' placeholder='제목을 입력해주세요.' />
         <S.InputContainer>

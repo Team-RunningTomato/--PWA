@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1.75rem;
-  padding-top: 6rem;
+  padding: 6rem 1rem 0 1rem;
 `;
 
 export const Container = styled.div`

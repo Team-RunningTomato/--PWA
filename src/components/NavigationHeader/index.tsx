@@ -3,11 +3,12 @@
 import Link from 'next/link';
 
 import { BackArrowIcon } from '@/assets';
+import { Path } from '@/types';
 
 import * as S from './style';
 
 interface HeaderProps {
-  navigateUrl: string;
+  navigateUrl: Path;
   title?: string;
 }
 
