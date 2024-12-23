@@ -2,12 +2,15 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
+// import { useRouter } from 'next/navigation';
 import { DetailLocationIcon } from '@/assets';
 import { Input, MateBottomSheet, NavigationHeader } from '@/components';
+// import { usePostMateInfo } from '@/hooks/apis/meet';
 import { mateInfoSchema } from '@/schemas';
 import { useDateStore, useMateSheetStore, useTimeStore } from '@/stores';
 import { MateInfoFormType } from '@/types';
 
+// import { Path } from '@/types';
 import { useEffect, useState } from 'react';
 import { Address, useDaumPostcodePopup } from 'react-daum-postcode';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -15,6 +18,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as S from './style';
 
 const MatePage = () => {
+  // const { push } = useRouter();
   const {
     register,
     formState: {
@@ -25,6 +29,10 @@ const MatePage = () => {
   } = useForm<MateInfoFormType>({
     resolver: zodResolver(mateInfoSchema),
   });
+
+  // const { mutate: postMateInfo } = usePostMateInfo({
+  //   onSuccess: () => push(Path.MAIN),
+  // });
 
   const { isMateSheetOpen, openMateSheet } = useMateSheetStore();
   const { selectedDates } = useDateStore();
@@ -124,6 +132,7 @@ const MatePage = () => {
       date: date,
     };
     console.log(body);
+    // postMateInfo(body);
   };
 
   return (

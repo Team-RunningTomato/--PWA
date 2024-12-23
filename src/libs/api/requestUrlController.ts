@@ -5,3 +5,7 @@ export const authUrls = {
 export const userUrls = {
   patchMyBodyInfo: () => '/user',
 } as const;
+
+export const meetUrls = {
+  postMateInfo: () => '/meet',
+} as const;
