@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 
-import { meetQueryKeys, meetUrls, post } from '@/libs';
+import { meetingQueryKeys, meetingUrls, post } from '@/libs';
 import { PostMateInfoType } from '@/types';
 
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
@@ -9,7 +9,8 @@ export const usePostMateInfo = (
   options?: UseMutationOptions<unknown, AxiosError, PostMateInfoType>
 ) =>
   useMutation({
-    mutationKey: meetQueryKeys.postMateInfo(),
-    mutationFn: (data: PostMateInfoType) => post(meetUrls.postMateInfo(), data),
+    mutationKey: meetingQueryKeys.postMateInfo(),
+    mutationFn: (data: PostMateInfoType) =>
+      post(meetingUrls.postMateInfo(), data),
     ...options,
   });
