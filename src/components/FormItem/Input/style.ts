@@ -63,6 +63,8 @@ export const Icon = styled.div`
   width: 1.5rem;
   height: 1.5rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0.88rem;
   top: 50%;
   right: 1.12rem;
