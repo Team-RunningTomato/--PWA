@@ -22,6 +22,7 @@
     "emotion-reset": "^3.0.1",
     "next": "14.0.2",
     "react": "18.2.0",
+    "react-daum-postcode": "^3.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.53.2",
     "zod": "^3.24.1",
