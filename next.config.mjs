@@ -9,8 +9,12 @@ const withPWA = withPWAInit({
 export default withPWA({
   rewrites: async () => [
     {
-      source: '/api:path*',
-      destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}:path*`,
+      source: '/api/:path*',
+      destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
+    },
+    {
+      source: '/kakao/:path*',
+      destination: `${process.env.NEXT_PUBLIC_KAKAO_BASE_URL}/:path*`,
     },
   ],
 });

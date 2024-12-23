@@ -8,7 +8,7 @@ import { Input, MateBottomSheet, NavigationHeader } from '@/components';
 // import { usePostMateInfo } from '@/hooks/apis/meet';
 import { mateInfoSchema } from '@/schemas';
 import { useDateStore, useMateSheetStore, useTimeStore } from '@/stores';
-import { MateInfoFormType } from '@/types';
+import { MateInfoFormType, Path } from '@/types';
 
 // import { Path } from '@/types';
 import { useEffect, useState } from 'react';
@@ -137,7 +137,7 @@ const MatePage = () => {
 
   return (
     <>
-      <NavigationHeader navigateUrl={'/'} title={'런닝 모집하기'} />
+      <NavigationHeader navigateUrl={Path.MAIN} title={'런닝 모집하기'} />
       <S.Wrapper onSubmit={handleSubmit(handleFormSubmit)} noValidate>
         <Input
           {...register('title')}
