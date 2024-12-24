@@ -1,17 +1,10 @@
 import { authUrls } from '@/libs';
-
-interface ResponseType {
-  grantType: string;
-  accessToken: string;
-  refreshToken: string;
-  accessTokenExpiresIn: number;
-  refreshTokenExpiresIn: number;
-}
+import { TokenInfoType } from '@/types';
 
 const postNaverLogin = async (
   authorizationCode: string,
   state: string
-): Promise<ResponseType | undefined> => {
+): Promise<TokenInfoType | undefined> => {
   try {
     const body = JSON.stringify({
       authorizationCode: authorizationCode,
