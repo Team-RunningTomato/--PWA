@@ -17,3 +17,11 @@ export interface MeetBoardDetailType {
 export interface AddressDetailType {
   address_name: string;
 }
+
+export interface TokenInfoType {
+  grantType: string;
+  accessToken: string;
+  refreshToken: string;
+  accessTokenExpiresIn: number;
+  refreshTokenExpiresIn: number;
+}

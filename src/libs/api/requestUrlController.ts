@@ -1,5 +1,6 @@
 export const authUrls = {
   postNaverLogin: () => '/auth/naver',
+  patchRefresh: () => '/auth',
 } as const;
 
 export const userUrls = {
