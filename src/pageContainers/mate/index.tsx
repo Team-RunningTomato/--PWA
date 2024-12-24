@@ -18,6 +18,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as S from './style';
 
 const MatePage = () => {
+  // const geoCoder = new window.kakao.maps.services.Geocoder();
+  // const [geoCoder, setGeoCoder] = useState<any>(null);
+
+  // useEffect(() => {
+  //   const geoCoderInstance = new window.kakao.maps.services.Geocoder();
+  //   setGeoCoder(geoCoderInstance);
+  // }, []);
   // const { push } = useRouter();
   const {
     register,
@@ -41,6 +48,8 @@ const MatePage = () => {
   const daumPostCode = useDaumPostcodePopup();
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  // const [searchAddress, setSearchAddress] = useState<string>();
 
   const formatDate = (month: number, date: number) => `${month}월 ${date}일`;
 
@@ -109,6 +118,26 @@ const MatePage = () => {
     zonecode,
   }: Address) => {
     setValue('startLocation', `${address} ${zonecode}`);
+
+    // const getAddressCoords = (address: string) => {
+    //   if (!geoCoder) {
+    //     console.error('GeoCoder가 초기화되지 않았습니다.');
+    //     return;
+    //   }
+
+    //   return new Promise((resolve, reject) => {
+    //     geoCoder.addressSearch(address, (result: any, status: any) => {
+    //       if (status === kakao.maps.services.Status.OK) {
+    //         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    //         resolve(coords);
+    //       } else {
+    //         reject(status);
+    //       }
+    //     });
+    //   });
+    // };
+
+    // getAddressCoords(address);
   };
 
   const handleStartLocationBtnClick = () =>
