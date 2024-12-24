@@ -19,6 +19,7 @@ import * as S from './style';
 
 const MatePage = () => {
   const geoCoder = new window.kakao.maps.services.Geocoder();
+  // const geoCoder = new window.kakao.maps.services.Geocoder();
   // const [geoCoder, setGeoCoder] = useState<any>(null);
 
   // useEffect(() => {
@@ -138,6 +139,25 @@ const MatePage = () => {
     };
 
     getAddressCoords(address);
+    // const getAddressCoords = (address: string) => {
+    //   if (!geoCoder) {
+    //     console.error('GeoCoder가 초기화되지 않았습니다.');
+    //     return;
+    //   }
+
+    //   return new Promise((resolve, reject) => {
+    //     geoCoder.addressSearch(address, (result: any, status: any) => {
+    //       if (status === kakao.maps.services.Status.OK) {
+    //         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    //         resolve(coords);
+    //       } else {
+    //         reject(status);
+    //       }
+    //     });
+    //   });
+    // };
+
+    // getAddressCoords(address);
   };
 
   const handleStartLocationBtnClick = () =>
