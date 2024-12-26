@@ -6,11 +6,16 @@ export const authUrls = {
 export const userUrls = {
   getMyInfo: () => '/user',
   patchMyBodyInfo: () => '/user',
+  getMyRunningApplication: () => '/user/meetings/application',
 } as const;
 
 export const meetingUrls = {
   getMeetingDetail: (id: string) => `/meeting/${id}`,
   postMeetingApplication: (id: string) => `/meeting/member/${id}`,
+} as const;
+
+export const runUrls = {
+  postRunRecord: () => '/run',
 } as const;
 
 export const kakaoUrls = {
