@@ -30,15 +30,15 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
+  ${({ theme }) => theme.typo.body2B};
+  color: ${({ theme }) => theme.color.white};
+  background: ${({ theme }) => theme.color.main2[800]};
   display: flex;
   width: 100%;
   padding: 0.875rem 0;
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  background: ${({ theme }) => theme.color.main2[800]};
-  ${({ theme }) => theme.typo.body2B};
-  color: ${({ theme }) => theme.color.white};
 `;
 
 export const MainContainer = styled.div`
