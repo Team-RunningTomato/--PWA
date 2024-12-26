@@ -17,6 +17,4 @@ export default meta;
 
 type Story = StoryObj<typeof RunningLevelModal>;
 
-export const Primary: Story = {
-  args: {},
-};
+export const Primary: Story = {};
