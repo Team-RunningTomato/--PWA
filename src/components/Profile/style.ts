@@ -20,7 +20,7 @@ export const UserInfoContainer = styled.div`
 `;
 
 export const Name = styled.p`
-  ${({ theme }) => theme.typo.caption1B};
+  ${({ theme }) => theme.typo.title2B};
   color: ${({ theme }) => theme.color.black};
 `;
 
@@ -29,14 +29,22 @@ export const StatsContainer = styled.div`
   align-items: center;
 `;
 
-export const StatItem = styled.div<{ border?: boolean }>`
+export const StatItem = styled.div<{
+  border?: boolean;
+  paddingRightOnly?: boolean;
+  paddingLeftRight?: boolean;
+}>`
   display: flex;
-  padding: 0rem 0.5rem;
   justify-content: center;
   align-items: center;
   ${({ border = true, theme }) =>
     border && `border-right: 0.0625rem solid ${theme.color.gray[100]};`}
 
+  ${({ paddingRightOnly }) => paddingRightOnly && `padding-right: 0.5rem;`}
+  
+  ${({ paddingLeftRight }) =>
+    paddingLeftRight && `padding-left: 0.5rem; padding-right: 0.5rem;`}
+  
   &:last-child {
     border-right: none;
   }
