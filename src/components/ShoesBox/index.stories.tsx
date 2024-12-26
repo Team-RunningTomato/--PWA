@@ -14,6 +14,4 @@ export default meta;
 
 type Story = StoryObj<typeof ShoesBox>;
 
-export const Primary: Story = {
-  args: {},
-};
+export const Primary: Story = {};
