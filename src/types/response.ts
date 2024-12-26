@@ -2,16 +2,15 @@ export interface MeetBoardDetailType {
   title: string;
   distance: string;
   startAt: string; // yyyy-MM-ddTHH:mm
-  startLocation: {
-    startLongitude: number;
-    startLatitude: number;
-  };
-  author: {
-    name: string;
-    level: string;
-  };
+  startLocation: StartLocationType;
+  author: AuthorType;
   addressDetail: string;
   memberNum: string;
+}
+
+export interface AuthorType {
+  name: string;
+  level: string;
 }
 
 export interface AddressDetailType {
@@ -37,4 +36,17 @@ export interface MyInfoType {
     worstDistance: number;
     levelPercentage: number;
   };
+}
+
+export interface RunningBoardType {
+  id: string;
+  title: string;
+  distance: number;
+  startAt: string;
+  startLocation: StartLocationType;
+}
+
+export interface StartLocationType {
+  startLongitude: number;
+  startLatitude: number;
 }
