@@ -18,15 +18,15 @@ const Profile = ({ name, level, kg, height }: ProfileProps) => {
         <S.UserInfoContainer>
           <S.Name>{name}</S.Name>
           <S.StatsContainer>
-            <S.StatItem paddingRightOnly>
+            <S.LeftPaddingItem>
               <S.Level>Lv {level}</S.Level>
-            </S.StatItem>
+            </S.LeftPaddingItem>
 
-            <S.StatItem paddingLeftRight>
+            <S.StatItem>
               <S.Weight>{kg}kg</S.Weight>
             </S.StatItem>
 
-            <S.StatItem paddingLeftRight border={false}>
+            <S.StatItem border={false}>
               <S.Height>{height}cm</S.Height>
             </S.StatItem>
           </S.StatsContainer>
