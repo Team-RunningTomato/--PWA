@@ -1,16 +1,15 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 
-// import { useRouter } from 'next/navigation';
 import { DetailLocationIcon } from '@/assets';
 import { Input, MateBottomSheet, NavigationHeader } from '@/components';
-// import { usePostMateInfo } from '@/hooks/apis/meet';
+import { usePostMateInfo } from '@/hooks/apis/meet';
 import { mateInfoSchema } from '@/schemas';
 import { useDateStore, useMateSheetStore, useTimeStore } from '@/stores';
 import { MateInfoFormType, Path } from '@/types';
 
-// import { Path } from '@/types';
 import { useEffect, useState } from 'react';
 import { Address, useDaumPostcodePopup } from 'react-daum-postcode';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -18,7 +17,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as S from './style';
 
 const MatePage = () => {
-  // const { push } = useRouter();
+  const { push } = useRouter();
   const {
     register,
     formState: {
@@ -30,9 +29,9 @@ const MatePage = () => {
     resolver: zodResolver(mateInfoSchema),
   });
 
-  // const { mutate: postMateInfo } = usePostMateInfo({
-  //   onSuccess: () => push(Path.MAIN),
-  // });
+  const { mutate: postMateInfo } = usePostMateInfo({
+    onSuccess: () => push(Path.MAIN),
+  });
 
   const { isMateSheetOpen, openMateSheet } = useMateSheetStore();
   const { selectedDates } = useDateStore();
@@ -41,6 +40,10 @@ const MatePage = () => {
   const daumPostCode = useDaumPostcodePopup();
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [coordinates, setCoordinates] = useState<{
+    lat: string;
+    lon: string;
+  }>({ lat: '', lon: '' });
 
   const formatDate = (month: number, date: number) => `${month}월 ${date}일`;
 
@@ -105,6 +108,7 @@ const MatePage = () => {
 
       if (data.length > 0) {
         const { lat, lon } = data[0];
+        setCoordinates({ lat, lon });
         return { lat, lon };
       }
     } catch (error) {}
@@ -128,10 +132,7 @@ const MatePage = () => {
     zonecode,
   }: Address) => {
     setValue('startLocation', `${address} ${zonecode}`);
-    const geocode = await fetchGeocode(address);
-    if (geocode) {
-      console.log('Geocode:', geocode);
-    }
+    await fetchGeocode(address);
   };
 
   const handleStartLocationBtnClick = () =>
@@ -142,20 +143,17 @@ const MatePage = () => {
 
   const handleFormSubmit: SubmitHandler<MateInfoFormType> = ({
     title,
-    location,
-    address,
     distance,
     date,
   }) => {
     const body = {
       title: title,
-      location: location,
-      address: address,
       distance: distance,
-      date: date,
+      startAt: date,
+      startLongitude: coordinates.lon,
+      startLatitude: coordinates.lat,
     };
-    console.log(body);
-    // postMateInfo(body);
+    postMateInfo(body);
   };
 
   return (
