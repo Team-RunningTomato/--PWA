@@ -10,8 +10,8 @@ const meta: Meta<typeof RunningLevelBox> = {
   },
   args: {
     totalDistance: 15,
-    bestDistance: 10,
-    worstDistance: 5,
+    longestDistance: 10,
+    shortestDistance: 5,
     percent: 10,
   },
 };

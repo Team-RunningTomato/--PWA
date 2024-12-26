@@ -7,21 +7,21 @@ import * as S from './style';
 
 interface RunningLevelBoxProps {
   totalDistance: number;
-  bestDistance: number;
-  worstDistance: number;
+  longestDistance: number;
+  shortestDistance: number;
   percent: number;
 }
 
 const RunningLevelBox = ({
   totalDistance,
-  bestDistance,
-  worstDistance,
+  longestDistance,
+  shortestDistance,
   percent,
 }: RunningLevelBoxProps) => {
   const distances = [
     { label: '총 거리', value: `${totalDistance}km` },
-    { label: '가장 많이 달린', value: `${bestDistance}km` },
-    { label: '가장 적게 달린', value: `${worstDistance}km` },
+    { label: '가장 많이 달린', value: `${longestDistance}km` },
+    { label: '가장 적게 달린', value: `${shortestDistance}km` },
   ];
 
   return (
