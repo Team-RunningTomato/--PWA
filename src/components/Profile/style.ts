@@ -31,7 +31,6 @@ export const StatsContainer = styled.div`
 
 export const StatItem = styled.div<{ border?: boolean }>`
   display: flex;
-  padding: 0rem 0.5rem;
   justify-content: center;
   align-items: center;
   ${({ border = true, theme }) =>
@@ -42,16 +41,15 @@ export const StatItem = styled.div<{ border?: boolean }>`
   }
 `;
 
-export const LeftPaddingItem = styled(StatItem)`
-  padding-left: 0rem;
-`;
-
 const BaseStatText = styled.p`
   ${({ theme }) => theme.typo.caption1R};
   color: ${({ theme }) => theme.color.gray[300]};
+  padding: 0rem 0.5rem;
 `;
 
-export const Level = styled(BaseStatText)``;
+export const Level = styled(BaseStatText)`
+  padding-left: 0;
+`;
 export const Weight = styled(BaseStatText)``;
 export const Height = styled(BaseStatText)``;
 
