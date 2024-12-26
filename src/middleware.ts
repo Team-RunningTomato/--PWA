@@ -5,7 +5,7 @@ import { postNaverLogin } from '@/apis';
 import { Path } from '@/types';
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+  let response = NextResponse.next();
   const authorizationCode = request.nextUrl.searchParams.get('code');
   const state = request.nextUrl.searchParams.get('state');
 
@@ -15,6 +15,8 @@ export async function middleware(request: NextRequest) {
 
   if (!tokenInfo)
     return NextResponse.redirect(new URL(Path.LOGIN, request.url));
+
+  response = NextResponse.redirect(new URL(Path.BODY, request.url), {});
 
   response.cookies.set({
     name: 'accessToken',

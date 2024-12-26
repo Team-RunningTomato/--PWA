@@ -4,6 +4,7 @@ export const authUrls = {
 } as const;
 
 export const userUrls = {
+  getMyInfo: () => '/user',
   patchMyBodyInfo: () => '/user',
 } as const;
 
