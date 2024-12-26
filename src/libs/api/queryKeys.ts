@@ -1,5 +1,6 @@
 export const userQueryKeys = {
   patchMyBodyInfo: () => ['body', 'height', 'weight'],
+  getMyInfo: () => ['user', 'get', 'info'],
 } as const;
 
 export const meetingQueryKeys = {

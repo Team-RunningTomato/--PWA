@@ -25,3 +25,16 @@ export interface TokenInfoType {
   accessTokenExpiresIn: number;
   refreshTokenExpiresIn: number;
 }
+
+export interface MyInfoType {
+  id: string;
+  name: string;
+  weight: string | null;
+  height: string | null;
+  runningUser: {
+    totalDistance: number;
+    bestDistance: number;
+    worstDistance: number;
+    levelPercentage: number;
+  };
+}
