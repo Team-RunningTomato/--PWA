@@ -50,7 +50,7 @@ export const MainContainer = styled.div`
 
 export const TextContainer = styled.div`
   display: flex;
-  width: 11.9375rem;
+  width: 15rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;

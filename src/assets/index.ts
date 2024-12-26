@@ -26,3 +26,4 @@ export { default as LV2Shoes } from './LV2Shoes';
 export { default as LV3Shoes } from './LV3Shoes';
 export { default as LV4Shoes } from './LV4Shoes';
 export { default as LV5Shoes } from './LV5Shoes';
+export { default as LV6Shoes } from './LV6Shoes';
