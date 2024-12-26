@@ -14,3 +14,4 @@ export { default as SelectFilter } from './SelectFilter';
 export { default as NavigationHeader } from './NavigationHeader';
 export { default as MateBottomSheet } from './MateBottomSheet';
 export { default as MeasurementButton } from './MeasurementButton';
+export { default as ShoesBox } from './ShoesBox';
