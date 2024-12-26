@@ -2,7 +2,9 @@
 
 import { Circle } from '@/assets';
 import { ShoesBox } from '@/components';
-import { useLVStore, useModalStore } from '@/stores';
+import { useLVStore } from '@/stores';
+
+import { useState } from 'react';
 
 import * as S from './style';
 
@@ -12,7 +14,8 @@ interface RunningLevelProps {
 
 const RunningLevelModal = ({ percent }: RunningLevelProps) => {
   const { LV } = useLVStore();
-  const { closeModal } = useModalStore();
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const getLVText = (value: number): string[] => {
     switch (value) {
@@ -73,7 +76,7 @@ const RunningLevelModal = ({ percent }: RunningLevelProps) => {
               </S.LV>
             </S.TextContainer>
           </S.MainContainer>
-          <S.Button onClick={closeModal}>확인</S.Button>
+          <S.Button onClick={() => setIsModalOpen(false)}>확인</S.Button>
         </S.Container>
       </S.Wrapper>
     </S.Backdrop>
