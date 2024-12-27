@@ -33,8 +33,20 @@ export interface MyInfoType {
   runningUser: {
     totalDistance: number;
     bestDistance: number;
-    worstDistance: number;
+    worstDistance: number | null;
     levelPercentage: number;
+    level: number;
+  };
+}
+
+export interface MyMateInfoType {
+  id: string;
+  title: string;
+  distance: number;
+  startAt: string;
+  startLocation: {
+    startLongitude: number;
+    startLatitude: number;
   };
 }
 
