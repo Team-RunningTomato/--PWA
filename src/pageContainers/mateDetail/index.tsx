@@ -1,10 +1,11 @@
 'use client';
 
 import { CoordinateIcon, PeopleIcon } from '@/assets';
-import { NavigationHeader } from '@/components';
+import { MeasurementButton, NavigationHeader } from '@/components';
 import { useGetMeetingDetail } from '@/hooks';
 import useGetLocation from '@/hooks/apis/kakao/useGetLocation';
 import usePostMeetingApplication from '@/hooks/apis/meet/usePostMeetingApplication';
+import { useGetMyRunningApplication } from '@/hooks/apis/user/useGetMyRunningApplication';
 import { Path } from '@/types';
 import { formatDate } from '@/utils';
 
@@ -38,6 +39,9 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
       enabled: !!meetingDetail,
     }
   );
+
+  const { data: myRunningApplicationList } = useGetMyRunningApplication();
+
   const { mutate: postMeetingApplication } = usePostMeetingApplication(id, {
     onSuccess: () => {
       meetingDetailRefetch();
@@ -72,6 +76,19 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
       <S.InfoBox>
         <S.TopBox>
           <S.KM>{meetingDetail?.distance}km</S.KM>
+
+          {myRunningApplicationList && (
+            <MeasurementButton
+              state={
+                myRunningApplicationList.some(
+                  (application) => application.id === id
+                )
+                  ? 'on'
+                  : 'off'
+              }
+              url={`${Path.RUNNING}/${id}`}
+            />
+          )}
         </S.TopBox>
 
         <S.AuthorInfoBox>

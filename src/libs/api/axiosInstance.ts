@@ -17,7 +17,6 @@ const waitRefreshEnd = () =>
       if (isRefreshing === false) {
         return resolve();
       } else {
-        console.log('isRefreshing');
         setTimeout(() => refreshEndCheck(), 1000);
       }
     };

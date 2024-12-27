@@ -14,18 +14,16 @@ interface HeaderProps {
 
 const NavigationHeader = ({ navigateUrl, title }: HeaderProps) => {
   return (
-    <S.PositionWrapper>
-      <S.Wrapper>
-        <S.Container>
-          <S.LinkContainer>
-            <Link href={navigateUrl}>
-              <BackArrowIcon />
-            </Link>
-          </S.LinkContainer>
-          <S.Text>{title}</S.Text>
-        </S.Container>
-      </S.Wrapper>
-    </S.PositionWrapper>
+    <S.Wrapper>
+      <S.Container>
+        <S.LinkContainer>
+          <Link href={navigateUrl}>
+            <BackArrowIcon />
+          </Link>
+        </S.LinkContainer>
+        <S.Text>{title}</S.Text>
+      </S.Container>
+    </S.Wrapper>
   );
 };
 

@@ -1,20 +1,11 @@
 import styled from '@emotion/styled';
 
-export const PositionWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
-  padding: 1rem;
 `;
 
 export const Container = styled.div`
@@ -23,7 +14,7 @@ export const Container = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 2.75rem;
+  height: 3.25rem;
 `;
 
 export const Text = styled.h1`

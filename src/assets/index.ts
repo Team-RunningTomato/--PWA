@@ -20,6 +20,7 @@ export { default as BackArrowIcon } from './BackArrowIcon';
 export { default as DetailLocationIcon } from './DetailLocationIcon';
 export { default as PeopleIcon } from './PeopleIcon';
 export { default as CoordinateIcon } from './CoordinateIcon';
+export { default as ClockIcon } from './ClockIcon';
 export { default as Circle } from './Circle';
 export { default as LV1Shoes } from './LV1Shoes';
 export { default as LV2Shoes } from './LV2Shoes';
