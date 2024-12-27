@@ -5,6 +5,7 @@ export const userQueryKeys = {
 } as const;
 
 export const meetingQueryKeys = {
+  getMeetings: () => ['meetings', 'mate', 'application'],
   getMeetingDetail: (id: string) => ['meeting', 'detail', id],
   postMeetingApplication: (id: string) => ['meeting, application', id],
 };

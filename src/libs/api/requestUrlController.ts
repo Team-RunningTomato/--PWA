@@ -10,6 +10,7 @@ export const userUrls = {
 } as const;
 
 export const meetingUrls = {
+  getMeetings: () => '/meeting',
   getMeetingDetail: (id: string) => `/meeting/${id}`,
   postMeetingApplication: (id: string) => `/meeting/member/${id}`,
 } as const;
