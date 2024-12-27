@@ -6,6 +6,14 @@ export const Wrapper = styled.div`
   padding: 1rem 1rem 0 1rem;
   display: flex;
   flex-direction: column;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2.25rem;
 `;
 

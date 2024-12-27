@@ -17,8 +17,8 @@ const MyPage = ({
   mateBoxData,
 }: MyPageProps) => {
   return (
-    <>
-      <S.Wrapper>
+    <S.Wrapper>
+      <S.Container>
         <Profile {...profileData} />
         <RunningLevelBox {...runningLevelBoxData} />
         <S.MateWrapper>
@@ -29,9 +29,9 @@ const MyPage = ({
             ))}
           </S.MateContainer>
         </S.MateWrapper>
-      </S.Wrapper>
-      <BottomBar />
-    </>
+        <BottomBar />
+      </S.Container>
+    </S.Wrapper>
   );
 };
 
