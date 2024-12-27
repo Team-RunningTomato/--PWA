@@ -2,6 +2,7 @@ export const userQueryKeys = {
   patchMyBodyInfo: () => ['body', 'height', 'weight'],
   getMyInfo: () => ['user', 'get', 'info'],
   getMyRunningApplication: () => ['running', 'application', 'my'],
+  getMyMateInfo: () => ['mate', 'info', 'my'],
 } as const;
 
 export const meetingQueryKeys = {
