@@ -14,20 +14,36 @@ import {
 } from '@/hooks';
 import { useLVStore } from '@/stores';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import * as S from './style';
 
+interface AddressData {
+  address: {
+    province: string;
+    town?: string;
+    village?: string;
+    road?: string;
+  };
+}
+
 const MainPage = () => {
-  const { LV, setLV } = useLVStore();
+  const { setLV } = useLVStore();
 
   const { data: myInfo } = useGetMyInfo();
 
   const { data: myRunningApplicationList } = useGetMyRunningApplication();
-
   const { data: meetingData } = useGetMeetings();
 
-  console.log(meetingData);
+  const [runningLocation, setRunningLocation] = useState<string | undefined>(
+    ''
+  );
+
+  const [runningTitle, setRunningTitle] = useState<string | undefined>('');
+
+  const [meetingLocations, setMeetingLocations] = useState<
+    Map<string, string | undefined>
+  >(new Map());
 
   const { runningUser } = myInfo || {};
   const { totalDistance, bestDistance, worstDistance, level } =
@@ -37,9 +53,75 @@ const MainPage = () => {
     ? myRunningApplicationList.slice(0, 3).map((app) => app.title)
     : ['신청한 런닝이 없습니다.'];
 
+  const closestApplication = useMemo(() => {
+    if (!myRunningApplicationList || myRunningApplicationList.length === 0) {
+      return null;
+    }
+
+    const now = new Date();
+    return myRunningApplicationList.reduce((closest, current) => {
+      const currentStartAt = new Date(current.startAt);
+      const closestStartAt = new Date(closest.startAt);
+      const currentDiff = Math.abs(currentStartAt.getTime() - now.getTime());
+      const closestDiff = Math.abs(closestStartAt.getTime() - now.getTime());
+
+      return currentDiff < closestDiff ? current : closest;
+    });
+  }, [myRunningApplicationList]);
+
+  const { distance, startAt, startLocation } = closestApplication || {};
+
+  const { startLatitude, startLongitude } = startLocation || {};
+
   useEffect(() => {
     setLV(level! + 1);
   }, [level]);
+
+  const reverseGeocode = async (
+    lat: number,
+    lon: number
+  ): Promise<{ fullAddress: string; shortAddress: string } | undefined> => {
+    const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const { province, town, village, road } = data.address;
+
+      const fullAddress = `${province} ${town} ${village} ${road}`.trim();
+      const shortAddress = `${province} ${town} ${village}`.trim();
+
+      return { fullAddress, shortAddress };
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    if (closestApplication) {
+      reverseGeocode(startLatitude!, startLongitude!).then((result) => {
+        if (result) {
+          const { fullAddress, shortAddress } = result;
+          setRunningTitle(fullAddress);
+          setRunningLocation(shortAddress);
+        }
+      });
+    }
+  }, [closestApplication, startLatitude, startLongitude]);
+
+  useEffect(() => {
+    if (meetingData && meetingData.length > 0) {
+      meetingData.forEach((meeting) => {
+        const { id, startLocation } = meeting;
+        const { startLatitude, startLongitude } = startLocation;
+
+        reverseGeocode(startLatitude, startLongitude).then((result) => {
+          if (result) {
+            setMeetingLocations((prev) =>
+              new Map(prev).set(id, result.shortAddress)
+            );
+          }
+        });
+      });
+    }
+  }, [meetingData]);
 
   return (
     <S.Wrapper>
@@ -47,10 +129,10 @@ const MainPage = () => {
         <S.Box>
           <TopBar />
           <RunningState
-            location={''}
-            intendKM={''}
-            title={''}
-            date={''}
+            location={runningLocation!}
+            distance={distance!}
+            title={runningTitle!}
+            date={startAt!}
             level={level!}
             totalDistance={totalDistance!}
             bestDistance={bestDistance!}
@@ -63,11 +145,11 @@ const MainPage = () => {
               <SelectFilter />
             </S.RecruitContainer>
             <S.RecruitBox>
-              {meetingData?.map(({ id, title, distance, startAt }) => (
+              {meetingData?.map(({ id, distance, startAt }) => (
                 <MateBox
                   key={id}
                   distance={distance}
-                  title={title}
+                  title={meetingLocations.get(id)!}
                   time={startAt}
                 />
               ))}
