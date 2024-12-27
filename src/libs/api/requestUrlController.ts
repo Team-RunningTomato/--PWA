@@ -15,7 +15,7 @@ export const meetingUrls = {
 } as const;
 
 export const runUrls = {
-  postRunRecord: () => '/run',
+  postRunRecord: (id: string) => `/run/${id}`,
 } as const;
 
 export const kakaoUrls = {

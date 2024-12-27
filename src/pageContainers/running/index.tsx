@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { number } from 'zod';
+import { useRouter } from 'next/navigation';
 
 import { NavigationHeader } from '@/components';
 import { useGetMeetingDetail, useGetMyInfo, usePostRunRecord } from '@/hooks';
 import { theme } from '@/styles';
-import { Path } from '@/types';
+import { Path, RunningMeasurementType } from '@/types';
 
 import { useEffect, useState } from 'react';
 import { MapMarker, Polyline } from 'react-kakao-maps-sdk';
@@ -17,9 +17,10 @@ const oneImgSrc = '/imgs/1.png';
 const twoImgSrc = '/imgs/2.png';
 const threeImgSrc = '/imgs/3.png';
 const startImgSrc = '/imgs/start.png';
+const finishImgSrc = '/imgs/finish.png';
 const markerSrc = '/icons/markerIcon.png';
 
-interface RunningPage {
+interface RunningPageProps {
   id: string;
 }
 
@@ -28,12 +29,14 @@ interface PositionType {
   lng: number;
 }
 
-const RunningPage = ({ id }: RunningPage) => {
+type CountType = 3 | 2 | 1 | 'start' | 'finish';
+
+const RunningPage = ({ id }: RunningPageProps) => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [setIntervalId, setSetIntervalId] = useState<NodeJS.Timeout | null>(
     null
   );
-  const [count, setCount] = useState<number>(3);
+  const [count, setCount] = useState<CountType>(3);
   const [runningRoute, setRunningRoute] = useState<PositionType[]>([]);
   const [distance, setDistance] = useState<number>(0);
   const [timer, setTimer] = useState<number>(0);
@@ -48,6 +51,7 @@ const RunningPage = ({ id }: RunningPage) => {
     Number(meetingDetail?.distance) -
     distance / 1000
   ).toFixed(2);
+  const { push } = useRouter();
 
   const imageSrc = (() => {
     switch (count) {
@@ -60,13 +64,19 @@ const RunningPage = ({ id }: RunningPage) => {
       case 1:
         return oneImgSrc;
 
-      case 0:
-      default:
+      case 'start':
         return startImgSrc;
+
+      case 'finish':
+        return finishImgSrc;
     }
   })();
 
-  const { mutate } = usePostRunRecord();
+  const { mutate } = usePostRunRecord(id, {
+    onSuccess: () => {
+      push(Path.MAIN);
+    },
+  });
 
   const getPosition = () =>
     navigator.geolocation.getCurrentPosition(
@@ -80,8 +90,28 @@ const RunningPage = ({ id }: RunningPage) => {
     setInterval(() => {
       if (Number(remainedKM) <= 0) {
         clearInterval(id);
+        setCount('finish');
+        setIsModal(true);
 
-        return mutate(); // 백엔드 파트와 body에 관한 이야기가 필요함
+        const hour = String(Math.floor(timer / 3600)).padStart(2, '0');
+        const min = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
+        const sec = String(timer % 60).padStart(2, '0');
+
+        const startLongitude = runningRoute[0].lng;
+        const startLatitude = runningRoute[0].lat;
+        const endLongitude = runningRoute[lastIndex].lng;
+        const endLatitude = runningRoute[lastIndex].lat;
+        const runningTime = `${hour}:${min}:${sec}`;
+
+        const body: RunningMeasurementType = {
+          startLongitude: startLongitude,
+          startLatitude: startLatitude,
+          endLongitude: endLongitude,
+          endLatitude: endLatitude,
+          runningTime: runningTime,
+        };
+
+        return mutate(body); // 백엔드 파트와 body에 관한 이야기가 필요함
       }
 
       startTimer();
@@ -120,7 +150,7 @@ const RunningPage = ({ id }: RunningPage) => {
     setCount(1);
 
     await delay(1000);
-    setCount(0);
+    setCount('start');
     getPosition();
 
     await delay(500);

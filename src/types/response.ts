@@ -50,3 +50,11 @@ export interface StartLocationType {
   startLongitude: number;
   startLatitude: number;
 }
+
+export interface RunningMeasurementType {
+  startLongitude: number;
+  startLatitude: number;
+  endLongitude: number;
+  endLatitude: number;
+  runningTime: string;
+}
