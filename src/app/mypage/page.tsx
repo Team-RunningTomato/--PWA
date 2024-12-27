@@ -1,19 +1,5 @@
 import { MyPage } from '@/pageContainers';
 
-const mockProfileData = {
-  name: '김재균',
-  level: '1',
-  kg: '50',
-  height: '150',
-};
-
-const mockRunningLevelBoxData = {
-  totalDistance: 15,
-  longestDistance: 10,
-  shortestDistance: 5,
-  percent: 20,
-};
-
 const mockMateData = [
   {
     distance: '2',
@@ -36,13 +22,7 @@ const mockMateData = [
 ];
 
 const mypage = () => {
-  return (
-    <MyPage
-      profileData={mockProfileData}
-      runningLevelBoxData={mockRunningLevelBoxData}
-      mateBoxData={mockMateData}
-    />
-  );
+  return <MyPage mateBoxData={mockMateData} />;
 };
 
 export default mypage;
