@@ -4,7 +4,7 @@ import { meetingQueryKeys, meetingUrls, post } from '@/libs';
 
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
-const usePostMeetingApplication = (
+export const usePostMeetingApplication = (
   id: string,
   options?: UseMutationOptions<unknown, AxiosError>
 ) =>
@@ -13,5 +13,3 @@ const usePostMeetingApplication = (
     mutationFn: () => post(meetingUrls.postMeetingApplication(id)),
     ...options,
   });
-
-export default usePostMeetingApplication;
