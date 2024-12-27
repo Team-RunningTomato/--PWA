@@ -1,15 +1,11 @@
 'use client';
 
-import {
-  LocationIcon,
-  RightGreenArrow,
-  RunningShoesIcon,
-  SwipeIcon,
-} from '@/assets';
+import { LocationIcon, RightGreenArrow, SwipeIcon } from '@/assets';
 import RunningStateType from '@/types/runningStateType';
 
 import React, { useState } from 'react';
 
+import ShoesBox from '../ShoesBox';
 import * as S from './style';
 
 const RunningState = ({
@@ -17,10 +13,10 @@ const RunningState = ({
   intendKM,
   title,
   date,
-  LV,
-  distanceKM,
-  bestKM,
-  worstKM,
+  level,
+  totalDistance,
+  bestDistance,
+  worstDistance,
   todayRunning,
 }: RunningStateType) => {
   const [dragX, setDragX] = useState(0);
@@ -56,9 +52,9 @@ const RunningState = ({
   };
 
   const historyData = [
-    { title: '총 거리', value: `${distanceKM}km` },
-    { title: '가장 많이 달린', value: `${bestKM}km` },
-    { title: '가장 적게 달린', value: `${worstKM}km` },
+    { title: '총 거리', value: `${totalDistance}km` },
+    { title: '가장 많이 달린', value: `${bestDistance}km` },
+    { title: '가장 적게 달린', value: `${worstDistance ?? 0}km` },
   ];
 
   const isRightPosition = dragX > 110;
@@ -114,9 +110,9 @@ const RunningState = ({
               ) : (
                 <S.LeftBox>
                   <S.LVImgBox>
-                    <RunningShoesIcon />
+                    <ShoesBox />
                   </S.LVImgBox>
-                  <S.LVText>Lv {LV}</S.LVText>
+                  <S.LVText>Lv {level ?? 0}</S.LVText>
                 </S.LeftBox>
               )}
             </S.LeftContent>
