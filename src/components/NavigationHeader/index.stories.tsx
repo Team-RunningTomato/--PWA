@@ -1,3 +1,5 @@
+import { Path } from '@/types';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
 import NavigationHeader from '.';
@@ -9,6 +11,7 @@ const meta: Meta<typeof NavigationHeader> = {
     layout: 'padded',
   },
   args: {
+    navigateUrl: Path.MAIN,
     title: '런닝 모집하기',
   },
 };
