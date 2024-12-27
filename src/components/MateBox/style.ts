@@ -37,6 +37,10 @@ export const RunningInfoBox = styled.div`
 export const Title = styled.h1`
   ${({ theme }) => theme.typo.body1B};
   color: ${({ theme }) => theme.color.black};
+  width: 19rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const Distance = styled.p`

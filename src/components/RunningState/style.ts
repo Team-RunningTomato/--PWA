@@ -204,6 +204,10 @@ export const LocationBox = styled.div`
 export const LocationText = styled.p`
   ${({ theme }) => theme.typo.caption3R};
   color: ${({ theme }) => theme.color.gray[300]};
+  width: 8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const IntendKM = styled.p`
