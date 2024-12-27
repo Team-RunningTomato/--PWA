@@ -19,10 +19,10 @@ const MyPage = () => {
       <S.Container>
         <Profile name={name!} level={level!} kg={weight!} height={height!} />
         <RunningLevelBox
-          totalDistance={totalDistance!}
-          longestDistance={bestDistance!}
-          shortestDistance={worstDistance!}
-          percent={levelPercentage!}
+          totalDistance={totalDistance ?? 0}
+          longestDistance={bestDistance ?? 0}
+          shortestDistance={worstDistance ?? 0}
+          percent={levelPercentage ?? 0}
         />
         <S.MateWrapper>
           <S.Title>내가 모집한 런닝</S.Title>
