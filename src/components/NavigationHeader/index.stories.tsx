@@ -9,7 +9,6 @@ const meta: Meta<typeof NavigationHeader> = {
     layout: 'padded',
   },
   args: {
-    navigateUrl: '/',
     title: '런닝 모집하기',
   },
 };
