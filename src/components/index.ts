@@ -15,3 +15,5 @@ export { default as NavigationHeader } from './NavigationHeader';
 export { default as MateBottomSheet } from './MateBottomSheet';
 export { default as MeasurementButton } from './MeasurementButton';
 export { default as ShoesBox } from './ShoesBox';
+export { default as Profile } from './Profile';
+export { default as RunningLevelBox } from './RunningLevelBox';

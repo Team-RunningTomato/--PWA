@@ -1,17 +1,11 @@
 'use client';
 
 import { KebabMenuIcon } from '@/assets';
+import { ProfileType } from '@/types';
 
 import * as S from './style';
 
-interface ProfileProps {
-  name: string;
-  level: string;
-  kg: string;
-  height: string;
-}
-
-const Profile = ({ name, level, kg, height }: ProfileProps) => {
+const Profile = ({ name, level, kg, height }: ProfileType) => {
   return (
     <S.Wrapper>
       <S.ProfileContainer>

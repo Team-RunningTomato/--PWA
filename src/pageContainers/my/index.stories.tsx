@@ -1,25 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MainPage from '.';
+import MyPage from '.';
 
-const meta: Meta<typeof MainPage> = {
-  title: 'Pages/Main',
-  component: MainPage,
+const meta: Meta<typeof MyPage> = {
+  title: 'Pages/MyPage',
+  component: MyPage,
   args: {
-    runningStateData: {
-      location: '광주광역시 광산구 상무대로 312',
-      intendKM: '2',
-      title: '광주소프트웨어마이스터고',
-      date: '11월 27일 수요일 / 오전 02시 10분',
-      LV: '1',
-      distanceKM: '15',
-      bestKM: '10',
-      worstKM: '1',
-      todayRunning: [
-        '광주소프트웨어마이스터고에서 런닝 모집',
-        '광주소프트웨어마이스터고에서 런닝 모집',
-        '광주소프트웨어마이스터고에서 런닝 모집',
-      ],
+    profileData: {
+      name: '김재균',
+      level: '1',
+      kg: '50',
+      height: '150',
+    },
+    runningLevelBoxData: {
+      totalDistance: 15,
+      longestDistance: 10,
+      shortestDistance: 5,
+      percent: 20,
     },
     mateBoxData: [
       {
@@ -53,6 +50,6 @@ const meta: Meta<typeof MainPage> = {
 
 export default meta;
 
-type Story = StoryObj<typeof MainPage>;
+type Story = StoryObj<typeof MyPage>;
 
 export const Primary: Story = {};

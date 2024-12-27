@@ -2,22 +2,16 @@
 
 import { Circle } from '@/assets';
 import { ShoesBox } from '@/components';
+import { RunningLevelBoxType } from '@/types';
 
 import * as S from './style';
-
-interface RunningLevelBoxProps {
-  totalDistance: number;
-  longestDistance: number;
-  shortestDistance: number;
-  percent: number;
-}
 
 const RunningLevelBox = ({
   totalDistance,
   longestDistance,
   shortestDistance,
   percent,
-}: RunningLevelBoxProps) => {
+}: RunningLevelBoxType) => {
   const distances = [
     { label: '총 거리', value: `${totalDistance}km` },
     { label: '가장 많이 달린', value: `${longestDistance}km` },

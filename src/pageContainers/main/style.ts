@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: calc(100% - 3.75rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +11,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +19,7 @@ export const Container = styled.div`
 
 export const Box = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +29,8 @@ export const Box = styled.div`
 
 export const RecruitWrapper = styled.div`
   width: 100%;
+  height: calc(100% - 22.5rem);
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -46,6 +51,7 @@ export const RecruitBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  height: 17.5rem;
-  overflow: scroll;
+  overflow-y: auto;
+  max-height: 100%;
+  padding-bottom: 0.75rem;
 `;
