@@ -35,7 +35,7 @@ const mockMateData = [
   },
 ];
 
-const Login = () => {
+const mypage = () => {
   return (
     <MyPage
       profileData={mockProfileData}
@@ -45,4 +45,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default mypage;
