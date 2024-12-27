@@ -1,6 +1,6 @@
 export default interface MateBoxType {
   distance: string;
-  location: string;
+  location?: string;
   title: string;
   time: string;
 }

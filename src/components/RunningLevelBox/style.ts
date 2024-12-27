@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
   gap: 1.125rem;
 `;
