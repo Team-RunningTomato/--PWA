@@ -18,15 +18,6 @@ import { useEffect, useMemo, useState } from 'react';
 
 import * as S from './style';
 
-interface AddressData {
-  address: {
-    province: string;
-    town?: string;
-    village?: string;
-    road?: string;
-  };
-}
-
 const MainPage = () => {
   const { setLV } = useLVStore();
 
