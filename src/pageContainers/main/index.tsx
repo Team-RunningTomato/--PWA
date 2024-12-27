@@ -12,24 +12,24 @@ import { MateBoxType, RunningStateType } from '@/types';
 import * as S from './style';
 
 interface MainPageProps {
-  recruitData: MateBoxType[];
-  runningState: RunningStateType;
+  runningStateData: RunningStateType;
+  mateBoxData: MateBoxType[];
 }
 
-const MainPage = ({ recruitData, runningState }: MainPageProps) => {
+const MainPage = ({ runningStateData, mateBoxData }: MainPageProps) => {
   return (
     <S.Wrapper>
       <S.Container>
         <S.Box>
           <TopBar />
-          <RunningState {...runningState} />
+          <RunningState {...runningStateData} />
           <S.RecruitWrapper>
             <S.RecruitContainer>
               <S.RecruitText>런닝 모집</S.RecruitText>
               <SelectFilter />
             </S.RecruitContainer>
             <S.RecruitBox>
-              {recruitData.map((item, index) => (
+              {mateBoxData.map((item, index) => (
                 <MateBox key={index} {...item} />
               ))}
             </S.RecruitBox>
