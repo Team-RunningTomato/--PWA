@@ -7,30 +7,69 @@ import {
   SelectFilter,
   TopBar,
 } from '@/components';
-import { MateBoxType, RunningStateType } from '@/types';
+import {
+  useGetMeetings,
+  useGetMyInfo,
+  useGetMyRunningApplication,
+} from '@/hooks';
+import { useLVStore } from '@/stores';
+
+import { useEffect } from 'react';
 
 import * as S from './style';
 
-interface MainPageProps {
-  runningStateData: RunningStateType;
-  mateBoxData: MateBoxType[];
-}
+const MainPage = () => {
+  const { LV, setLV } = useLVStore();
 
-const MainPage = ({ runningStateData, mateBoxData }: MainPageProps) => {
+  const { data: myInfo } = useGetMyInfo();
+
+  const { data: myRunningApplicationList } = useGetMyRunningApplication();
+
+  const { data: meetingData } = useGetMeetings();
+
+  console.log(meetingData);
+
+  const { runningUser } = myInfo || {};
+  const { totalDistance, bestDistance, worstDistance, level } =
+    runningUser || {};
+
+  const todayRunning = myRunningApplicationList
+    ? myRunningApplicationList.slice(0, 3).map((app) => app.title)
+    : ['신청한 런닝이 없습니다.'];
+
+  useEffect(() => {
+    setLV(level! + 1);
+  }, [level]);
+
   return (
     <S.Wrapper>
       <S.Container>
         <S.Box>
           <TopBar />
-          <RunningState {...runningStateData} />
+          <RunningState
+            location={''}
+            intendKM={''}
+            title={''}
+            date={''}
+            level={level!}
+            totalDistance={totalDistance!}
+            bestDistance={bestDistance!}
+            worstDistance={worstDistance!}
+            todayRunning={todayRunning}
+          />
           <S.RecruitWrapper>
             <S.RecruitContainer>
               <S.RecruitText>런닝 모집</S.RecruitText>
               <SelectFilter />
             </S.RecruitContainer>
             <S.RecruitBox>
-              {mateBoxData.map((item, index) => (
-                <MateBox key={index} {...item} />
+              {meetingData?.map(({ id, title, distance, startAt }) => (
+                <MateBox
+                  key={id}
+                  distance={distance}
+                  title={title}
+                  time={startAt}
+                />
               ))}
             </S.RecruitBox>
           </S.RecruitWrapper>
