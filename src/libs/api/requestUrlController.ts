@@ -7,6 +7,7 @@ export const userUrls = {
   getMyInfo: () => '/user',
   patchMyBodyInfo: () => '/user',
   getMyRunningApplication: () => '/user/meetings/application',
+  getMyMateInfo: () => '/user/meetings',
 } as const;
 
 export const meetingUrls = {
