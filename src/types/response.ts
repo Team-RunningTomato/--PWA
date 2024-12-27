@@ -35,6 +35,7 @@ export interface MyInfoType {
     bestDistance: number;
     worstDistance: number;
     levelPercentage: number;
+    level: number;
   };
 }
 
@@ -57,4 +58,15 @@ export interface RunningMeasurementType {
   endLongitude: number;
   endLatitude: number;
   runningTime: string;
+}
+
+export interface MeetingsType {
+  id: string;
+  title: string;
+  distance: number;
+  startAt: string;
+  startLocation: {
+    startLongitude: number;
+    startLatitude: number;
+  };
 }
