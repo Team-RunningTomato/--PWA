@@ -15,6 +15,7 @@ interface RunningLevelProps {
 const RunningLevelModal = ({ percent }: RunningLevelProps) => {
   const { LV } = useLVStore();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const getLVText = (value: number): string[] => {
