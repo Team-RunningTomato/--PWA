@@ -2,6 +2,7 @@
 
 import { LocationIcon, RightGreenArrow, SwipeIcon } from '@/assets';
 import RunningStateType from '@/types/runningStateType';
+import { formatDate } from '@/utils';
 
 import React, { useState } from 'react';
 
@@ -10,7 +11,7 @@ import * as S from './style';
 
 const RunningState = ({
   location,
-  intendKM,
+  distance,
   title,
   date,
   level,
@@ -74,12 +75,12 @@ const RunningState = ({
                     <LocationIcon />
                     <S.LocationText>{location}</S.LocationText>
                   </S.LocationBox>
-                  <S.IntendKM>{intendKM}KM</S.IntendKM>
+                  <S.IntendKM>{distance}KM</S.IntendKM>
                 </S.LocationContainer>
                 <S.JoinTextBox>
                   <S.JoinTitle>{title}에서 런닝 모집</S.JoinTitle>
                 </S.JoinTextBox>
-                <S.DateText>{date}</S.DateText>
+                <S.DateText>{formatDate(date)}</S.DateText>
               </S.AppearContent>
             )}
             <S.LeftContent

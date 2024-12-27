@@ -1,6 +1,6 @@
 export default interface RunningStateType {
   location: string;
-  intendKM: string;
+  distance: number;
   title: string;
   date: string;
   level: number;
