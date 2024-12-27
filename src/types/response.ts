@@ -37,6 +37,7 @@ export interface MyInfoType {
     levelPercentage: number;
     level: number;
   };
+  /* TODO - best, worst 필드 네이밍 변경 시 반영 */
 }
 
 export interface MyMateInfoType {
