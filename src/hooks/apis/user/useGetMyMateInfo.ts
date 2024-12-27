@@ -7,12 +7,12 @@ import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 export const useGetMyMateInfo = (
   options?: Omit<
-    UseQueryOptions<MyMateInfoType, AxiosError>,
+    UseQueryOptions<MyMateInfoType[], AxiosError>,
     'queryKey' | 'queryFn'
   >
 ) =>
   useQuery({
     queryKey: userQueryKeys.getMyMateInfo(),
-    queryFn: () => get<MyMateInfoType>(userUrls.getMyMateInfo()),
+    queryFn: () => get<MyMateInfoType[]>(userUrls.getMyMateInfo()),
     ...options,
   });

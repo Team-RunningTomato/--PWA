@@ -2,15 +2,10 @@
 
 import { BottomBar, MateBox, Profile, RunningLevelBox } from '@/components';
 import { useGetMyInfo, useGetMyMateInfo } from '@/hooks';
-import { MateBoxType } from '@/types';
 
 import * as S from './style';
 
-interface MyPageProps {
-  mateBoxData: MateBoxType[];
-}
-
-const MyPage = ({ mateBoxData }: MyPageProps) => {
+const MyPage = () => {
   const { data: myInfo } = useGetMyInfo();
 
   const { data: myMateInfo } = useGetMyMateInfo();
@@ -18,11 +13,6 @@ const MyPage = ({ mateBoxData }: MyPageProps) => {
   const { name, weight, height, runningUser } = myInfo || {};
   const { totalDistance, bestDistance, worstDistance, levelPercentage, level } =
     runningUser || {};
-
-  const { title, distance, startAt, startLocation } = myMateInfo || {};
-  const { startLongitude, startLatitude } = startLocation || {};
-
-  console.log(myMateInfo);
 
   return (
     <S.Wrapper>
@@ -37,8 +27,13 @@ const MyPage = ({ mateBoxData }: MyPageProps) => {
         <S.MateWrapper>
           <S.Title>내가 모집한 런닝</S.Title>
           <S.MateContainer>
-            {mateBoxData.map((item, index) => (
-              <MateBox key={index} {...item} />
+            {myMateInfo?.map(({ title, distance, startAt }, index) => (
+              <MateBox
+                key={index}
+                distance={distance}
+                title={title}
+                time={startAt}
+              />
             ))}
           </S.MateContainer>
         </S.MateWrapper>
