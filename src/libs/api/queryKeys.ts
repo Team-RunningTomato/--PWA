@@ -1,6 +1,7 @@
 export const userQueryKeys = {
   patchMyBodyInfo: () => ['body', 'height', 'weight'],
   getMyInfo: () => ['user', 'get', 'info'],
+  getMyRunningApplication: () => ['running', 'application', 'my'],
 } as const;
 
 export const meetingQueryKeys = {
@@ -8,6 +9,10 @@ export const meetingQueryKeys = {
   postMeetingApplication: (id: string) => ['meeting, application', id],
   postMateInfo: () => ['mate', 'info', 'post'],
 };
+
+export const runQueryKeys = {
+  postRunRecord: () => ['run', 'record', 'post'],
+} as const;
 
 export const kakaoQueryKeys = {
   getLocation: (x: number, y: number) => [

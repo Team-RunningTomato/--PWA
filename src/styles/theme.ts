@@ -1,4 +1,9 @@
 const typo = {
+  title0: {
+    fontSize: '3.75rem',
+    lineHeight: '120%',
+    fontWeight: 500,
+  },
   title1: {
     fontSize: '1.875rem',
     lineHeight: '120%',
@@ -113,7 +118,7 @@ const color = {
     5: '#2888F8',
   },
   white: '#FFFFFF',
-  black: '#1E1E1E',
+  black: '#121212',
   error: '#F82828',
   success: '#28F828',
   naver: '#03C75A',

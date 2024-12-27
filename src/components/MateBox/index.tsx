@@ -16,10 +16,12 @@ const MateBox = ({ distance, location, title, time }: MateBoxType) => {
           <S.MainBox>
             <S.RunningInfoBox>
               <S.Distance>{distance}km</S.Distance>
-              <S.LocationBox>
-                <LocationIcon />
-                <S.LocationText>{location}</S.LocationText>
-              </S.LocationBox>
+              {location && (
+                <S.LocationBox>
+                  <LocationIcon />
+                  <S.LocationText>{location}</S.LocationText>
+                </S.LocationBox>
+              )}
             </S.RunningInfoBox>
             <S.Title>{title}</S.Title>
           </S.MainBox>

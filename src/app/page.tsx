@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-const mockRecruitData = [
+const mockMateData = [
   {
     distance: '2',
     location: '광주광역시 광산구 상무대로 312',
@@ -66,7 +66,7 @@ const mockRunningState = {
 
 const Main = () => {
   return (
-    <MainPage recruitData={mockRecruitData} runningState={mockRunningState} />
+    <MainPage runningStateData={mockRunningState} mateBoxData={mockMateData} />
   );
 };
 

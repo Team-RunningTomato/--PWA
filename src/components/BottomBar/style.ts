@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 22.5rem;
+  position: absolute;
+  bottom: 0;
+  height: 3.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
