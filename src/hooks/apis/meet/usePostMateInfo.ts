@@ -10,7 +10,7 @@ export const usePostMateInfo = (
 ) =>
   useMutation({
     mutationKey: meetingQueryKeys.postMateInfo(),
-    mutationFn: (data: PostMateInfoType) =>
-      post(meetingUrls.postMateInfo(), data),
+    mutationFn: (body: PostMateInfoType) =>
+      post(meetingUrls.postMateInfo(), body),
     ...options,
   });
