@@ -26,11 +26,9 @@ const MainPage = () => {
   const { data: myRunningApplicationList } = useGetMyRunningApplication();
   const { data: meetingData } = useGetMeetings();
 
-  const [runningLocation, setRunningLocation] = useState<string | undefined>(
-    ''
-  );
+  const [runningLocation, setRunningLocation] = useState<string>('');
 
-  const [runningTitle, setRunningTitle] = useState<string | undefined>('');
+  const [runningTitle, setRunningTitle] = useState<string>('');
 
   const [meetingLocations, setMeetingLocations] = useState<
     Map<string, string | undefined>
