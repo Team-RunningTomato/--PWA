@@ -44,6 +44,7 @@ const MatePage = () => {
     lat: string;
     lon: string;
   }>({ lat: '', lon: '' });
+  const [rangeDate, setRangeDate] = useState<string>('');
 
   const formatDate = (month: number, date: number) => `${month}월 ${date}일`;
 
@@ -60,9 +61,33 @@ const MatePage = () => {
     return `${period} ${formattedHour}시 ${formattedMinute}분`;
   };
 
+  const formatDateISO = (year: number, month: number, date: number) => {
+    const paddedMonth = String(month).padStart(2, '0');
+    const paddedDate = String(date).padStart(2, '0');
+    return `${year}-${paddedMonth}-${paddedDate}`;
+  };
+
+  const formatTimeISO = (
+    AMPM: string | null,
+    hour: number | null,
+    minute: number | null
+  ) => {
+    let formattedHour = hour;
+    if (AMPM === 'PM' && hour !== null && hour < 12) {
+      formattedHour = hour + 12;
+    } else if (AMPM === 'AM' && hour === 12) {
+      formattedHour = 0;
+    }
+
+    const paddedHour = String(formattedHour).padStart(2, '0');
+    const paddedMinute = String(minute).padStart(2, '0');
+    return `${paddedHour}:${paddedMinute}`;
+  };
+
   useEffect(() => {
     if (isClicked && !isNull && selectedDates.length > 0) {
       renderDateRange();
+      renderISODateRange();
     }
   }, [isClicked, selectedDates, AMPM, hour, minute]);
 
@@ -84,6 +109,20 @@ const MatePage = () => {
     setValue('date', dateRange);
 
     return dateRange;
+  };
+
+  const renderISODateRange = () => {
+    if (selectedDates.length > 0) {
+      const year = new Date().getFullYear();
+      const { month, date } = selectedDates[0];
+
+      const formattedDate = formatDateISO(year, month, date);
+      const formattedTime = formatTimeISO(AMPM, hour, minute);
+      const dateRange = `${formattedDate} ${formattedTime}`;
+
+      setRangeDate(dateRange);
+    }
+    return '';
   };
 
   const handleBottomSheet = () => {
@@ -144,14 +183,15 @@ const MatePage = () => {
   const handleFormSubmit: SubmitHandler<MateInfoFormType> = ({
     title,
     distance,
-    date,
+    address,
   }) => {
     const body = {
       title: title,
       distance: distance,
-      startAt: date,
+      startAt: rangeDate,
       startLongitude: coordinates.lon,
       startLatitude: coordinates.lat,
+      addressDetail: address,
     };
     postMateInfo(body);
   };
