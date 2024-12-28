@@ -1,6 +1,6 @@
 export default interface ProfileType {
   name: string;
-  level: string;
+  level: number;
   kg: string;
   height: string;
 }

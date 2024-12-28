@@ -14,8 +14,8 @@ const RunningLevelBox = ({
 }: RunningLevelBoxType) => {
   const distances = [
     { label: '총 거리', value: `${totalDistance}km` },
-    { label: '가장 많이 달린', value: `${longestDistance}km` },
-    { label: '가장 적게 달린', value: `${shortestDistance}km` },
+    { label: '가장 많이 달린', value: `${longestDistance ?? 0}km` },
+    { label: '가장 적게 달린', value: `${shortestDistance ?? 0}km` },
   ];
 
   return (
