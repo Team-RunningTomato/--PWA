@@ -70,14 +70,3 @@ export interface RunningMeasurementType {
   endLatitude: number;
   runningTime: string;
 }
-
-export interface MeetingsType {
-  id: string;
-  title: string;
-  distance: number;
-  startAt: string;
-  startLocation: {
-    startLongitude: number;
-    startLatitude: number;
-  };
-}
