@@ -6,18 +6,6 @@ const meta: Meta<typeof MyPage> = {
   title: 'Pages/MyPage',
   component: MyPage,
   args: {
-    profileData: {
-      name: '김재균',
-      level: '1',
-      kg: '50',
-      height: '150',
-    },
-    runningLevelBoxData: {
-      totalDistance: 15,
-      longestDistance: 10,
-      shortestDistance: 5,
-      percent: 20,
-    },
     mateBoxData: [
       {
         distance: '2',
