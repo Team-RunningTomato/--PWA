@@ -17,7 +17,12 @@ const MyPage = () => {
   return (
     <S.Wrapper>
       <S.Container>
-        <Profile name={name!} level={level!} kg={weight!} height={height!} />
+        <Profile
+          name={name ?? ''}
+          level={level ?? 0}
+          kg={weight ?? ''}
+          height={height ?? ''}
+        />
         <RunningLevelBox
           totalDistance={totalDistance ?? 0}
           longestDistance={bestDistance ?? 0}
