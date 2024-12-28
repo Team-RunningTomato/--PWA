@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 import { DetailLocationIcon } from '@/assets';
@@ -142,8 +143,8 @@ const MatePage = () => {
     )}&format=json`;
 
     try {
-      const response = await fetch(url);
-      const data = await response.json();
+      const response = await axios.get(url);
+      const data = response.data;
 
       if (data.length > 0) {
         const { lat, lon } = data[0];
