@@ -16,8 +16,8 @@ const RunningState = ({
   date,
   level,
   totalDistance,
-  bestDistance,
-  worstDistance,
+  longestDistance,
+  shortestDistance,
   todayRunning,
 }: RunningStateType) => {
   const [dragX, setDragX] = useState(0);
@@ -54,8 +54,8 @@ const RunningState = ({
 
   const historyData = [
     { title: '총 거리', value: `${totalDistance}km` },
-    { title: '가장 많이 달린', value: `${bestDistance}km` },
-    { title: '가장 적게 달린', value: `${worstDistance ?? 0}km` },
+    { title: '가장 많이 달린', value: `${longestDistance}km` },
+    { title: '가장 적게 달린', value: `${shortestDistance ?? 0}km` },
   ];
 
   const isRightPosition = dragX > 110;

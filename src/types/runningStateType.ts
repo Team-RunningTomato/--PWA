@@ -5,8 +5,8 @@ export default interface RunningStateType {
   date: string;
   level: number;
   totalDistance: number;
-  bestDistance: number;
-  worstDistance: number | null;
+  longestDistance: number;
+  shortestDistance: number | null;
   todayRunning: string[];
 
   //TODO 필드 명 변경시 변경

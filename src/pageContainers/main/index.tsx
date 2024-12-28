@@ -37,7 +37,7 @@ const MainPage = () => {
   >(new Map());
 
   const { runningUser } = myInfo || {};
-  const { totalDistance, bestDistance, worstDistance, level } =
+  const { totalDistance, longestDistance, shortestDistance, level } =
     runningUser || {};
 
   const todayRunning = myRunningApplicationList
@@ -114,21 +114,24 @@ const MainPage = () => {
     }
   }, [meetingData]);
 
+  const defaultString = '';
+  const defaultNumber = 0;
+
   return (
     <S.Wrapper>
       <S.Container>
         <S.Box>
           <TopBar />
           <RunningState
-            location={runningLocation!}
-            distance={distance!}
-            title={runningTitle!}
-            date={startAt!}
-            level={level!}
-            totalDistance={totalDistance!}
-            bestDistance={bestDistance!}
-            worstDistance={worstDistance!}
-            todayRunning={todayRunning}
+            location={runningLocation ?? defaultString}
+            distance={distance ?? defaultNumber}
+            title={runningTitle ?? defaultString}
+            date={startAt ?? defaultString}
+            level={level ?? defaultNumber}
+            totalDistance={totalDistance ?? defaultNumber}
+            longestDistance={longestDistance ?? defaultNumber}
+            shortestDistance={shortestDistance ?? defaultNumber}
+            todayRunning={todayRunning ?? defaultString}
           />
           <S.RecruitWrapper>
             <S.RecruitContainer>
