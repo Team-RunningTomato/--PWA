@@ -32,12 +32,11 @@ export interface MyInfoType {
   height: string | null;
   runningUser: {
     totalDistance: number;
-    bestDistance: number;
-    worstDistance: number | null;
+    longestDistance: number;
+    shortestDistance: number | null;
     levelPercentage: number;
     level: number;
   };
-  /* TODO - best, worst 필드 네이밍 변경 시 반영 */
 }
 
 export interface MyMateInfoType {

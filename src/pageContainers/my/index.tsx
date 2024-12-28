@@ -11,8 +11,13 @@ const MyPage = () => {
   const { data: myMateInfo } = useGetMyMateInfo();
 
   const { name, weight, height, runningUser } = myInfo || {};
-  const { totalDistance, bestDistance, worstDistance, levelPercentage, level } =
-    runningUser || {};
+  const {
+    totalDistance,
+    longestDistance,
+    shortestDistance,
+    levelPercentage,
+    level,
+  } = runningUser || {};
 
   return (
     <S.Wrapper>
@@ -25,8 +30,8 @@ const MyPage = () => {
         />
         <RunningLevelBox
           totalDistance={totalDistance ?? 0}
-          longestDistance={bestDistance ?? 0}
-          shortestDistance={worstDistance ?? 0}
+          longestDistance={longestDistance ?? 0}
+          shortestDistance={shortestDistance ?? 0}
           percent={levelPercentage ?? 0}
         />
         <S.MateWrapper>
