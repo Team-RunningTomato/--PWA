@@ -13,7 +13,7 @@ const meetingInfoSchema = z.object({
       required_error: '위치를 입력해주세요.',
     })
     .min(1, '위치를 입력해주세요.'),
-  address: z
+  addressDetail: z
     .string({
       invalid_type_error: '상세 주소를 입력해주세요.',
       required_error: '상세 주소를 입력해주세요.',

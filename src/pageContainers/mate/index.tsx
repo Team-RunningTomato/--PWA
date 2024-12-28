@@ -22,7 +22,7 @@ const MatePage = () => {
   const {
     register,
     formState: {
-      errors: { title, location, address, startLocation, distance, date },
+      errors: { title, location, addressDetail, startLocation, distance, date },
     },
     setValue,
     handleSubmit,
@@ -184,7 +184,7 @@ const MatePage = () => {
   const handleFormSubmit: SubmitHandler<MateInfoFormType> = ({
     title,
     distance,
-    address,
+    addressDetail,
   }) => {
     const body = {
       title: title,
@@ -192,7 +192,7 @@ const MatePage = () => {
       startAt: rangeDate,
       startLongitude: coordinates.lon,
       startLatitude: coordinates.lat,
-      addressDetail: address,
+      addressDetail: addressDetail,
     };
     postMateInfo(body);
   };
@@ -222,9 +222,9 @@ const MatePage = () => {
               />
             </S.InputButton>
             <Input
-              {...register('address')}
+              {...register('addressDetail')}
               placeholder='상세주소를 알려주세요.'
-              errorMessage={address?.message}
+              errorMessage={addressDetail?.message}
             />
           </S.ButtonContainer>
         </S.InputContainer>
