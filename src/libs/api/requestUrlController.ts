@@ -7,11 +7,14 @@ export const userUrls = {
   getMyInfo: () => '/user',
   patchMyBodyInfo: () => '/user',
   getMyRunningApplication: () => '/user/meetings/application',
+  getMyWroteMeeting: () => '/user/meetings',
 } as const;
 
 export const meetingUrls = {
   getMeetingDetail: (id: string) => `/meeting/${id}`,
   postMeetingApplication: (id: string) => `/meeting/member/${id}`,
+  deleteMeetingCancel: (id: string) => `/meeting/member/${id}`,
+  deleteMeetingBoard: (id: string) => `/meeting/${id}`,
 } as const;
 
 export const runUrls = {

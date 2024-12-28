@@ -1,15 +1,23 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { CoordinateIcon, PeopleIcon } from '@/assets';
 import { MeasurementButton, NavigationHeader } from '@/components';
-import { useGetMeetingDetail } from '@/hooks';
-import useGetLocation from '@/hooks/apis/kakao/useGetLocation';
-import usePostMeetingApplication from '@/hooks/apis/meet/usePostMeetingApplication';
-import { useGetMyRunningApplication } from '@/hooks/apis/user/useGetMyRunningApplication';
+import {
+  useDeleteMeetingBoard,
+  useDeleteMeetingCancel,
+  useGetLocation,
+  useGetMeetingDetail,
+  useGetMyRunningApplication,
+  useGetMyWroteMeeting,
+  usePostMeetingApplication,
+} from '@/hooks';
 import { Path } from '@/types';
 import { formatDate } from '@/utils';
 
 import { useEffect, useState } from 'react';
+import { MapMarker } from 'react-kakao-maps-sdk';
 
 import * as S from './style';
 
@@ -29,9 +37,9 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
     lat: 0,
     lng: 0,
   });
+  const { push } = useRouter();
 
-  const { data: meetingDetail, refetch: meetingDetailRefetch } =
-    useGetMeetingDetail(id);
+  const { data: meetingDetail } = useGetMeetingDetail(id, {});
   const { data: locationDetail } = useGetLocation(
     coordinate.lng,
     coordinate.lat,
@@ -39,14 +47,32 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
       enabled: !!meetingDetail,
     }
   );
-
-  const { data: myRunningApplicationList } = useGetMyRunningApplication();
+  const {
+    data: myRunningApplicationList,
+    refetch: myRunningApplicationListRefetch,
+  } = useGetMyRunningApplication();
+  const { data: myWroteMeetingList } = useGetMyWroteMeeting();
 
   const { mutate: postMeetingApplication } = usePostMeetingApplication(id, {
     onSuccess: () => {
-      meetingDetailRefetch();
+      myRunningApplicationListRefetch();
     },
   });
+  const { mutate: deleteMeetingCancel } = useDeleteMeetingCancel(id, {
+    onSuccess: () => {
+      myRunningApplicationListRefetch();
+    },
+  });
+  const { mutate: deleteMeetingBoard } = useDeleteMeetingBoard(id, {
+    onSuccess: () => push(Path.MAIN),
+  });
+
+  const isMyMeeting = myWroteMeetingList
+    ? myWroteMeetingList.some((meeting) => meeting.id === id)
+    : false;
+  const isApplied = myRunningApplicationList
+    ? myRunningApplicationList.some((meeting) => meeting.id === id)
+    : false;
 
   useEffect(() => {
     if (!meetingDetail) return;
@@ -63,7 +89,7 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
       {meetingDetail && (
         <S.MapBox>
           <S.KakaoMap center={coordinate}>
-            <S.Marker
+            <MapMarker
               position={coordinate}
               image={{ src: markerSrc, size: { width: 24, height: 24 } }}
             />
@@ -79,13 +105,7 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
 
           {myRunningApplicationList && (
             <MeasurementButton
-              state={
-                myRunningApplicationList.some(
-                  (application) => application.id === id
-                )
-                  ? 'on'
-                  : 'off'
-              }
+              state={isApplied ? 'on' : 'off'}
               url={`${Path.RUNNING}/${id}`}
             />
           )}
@@ -112,7 +132,24 @@ const MateDetailPage = ({ id }: MateDetailPageProps) => {
           </S.RightBox>
         </S.BottomBox>
       </S.InfoBox>
-      <S.Button onClick={() => postMeetingApplication()}>신청</S.Button>
+      {isMyMeeting ? (
+        <S.ButtonBox>
+          <S.EditButton onClick={() => push(`${Path.MATE}?id=${id}`)}>
+            수정하기
+          </S.EditButton>
+          <S.DeleteButton onClick={() => deleteMeetingBoard()}>
+            삭제하기
+          </S.DeleteButton>
+        </S.ButtonBox>
+      ) : isApplied ? (
+        <S.CancelButton onClick={() => deleteMeetingCancel()}>
+          취소
+        </S.CancelButton>
+      ) : (
+        <S.ApplicationButton onClick={() => postMeetingApplication()}>
+          신청
+        </S.ApplicationButton>
+      )}
     </S.Container>
   );
 };
