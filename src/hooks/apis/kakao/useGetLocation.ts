@@ -5,7 +5,7 @@ import { AddressDetailType, BaseUrl } from '@/types';
 
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
-const useGetLocation = (
+export const useGetLocation = (
   x: number,
   y: number,
   options?: Omit<
@@ -21,5 +21,3 @@ const useGetLocation = (
       }),
     ...options,
   });
-
-export default useGetLocation;
