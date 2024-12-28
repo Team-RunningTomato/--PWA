@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { Map } from 'react-kakao-maps-sdk';
 
 export const Container = styled.div`
   width: 100%;
@@ -74,7 +74,7 @@ export const PromiseTime = styled.p`
   color: ${({ theme }) => theme.color.gray[300]};
 `;
 
-export const Button = styled.button`
+export const ApplicationButton = styled.button`
   ${({ theme }) => theme.typo.body2B};
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.main2[800]};
@@ -84,6 +84,8 @@ export const Button = styled.button`
   bottom: 4.5rem;
   border-radius: 0.5rem;
 `;
+
+export const CancelButton = styled(ApplicationButton)``;
 
 export const KakaoMap = styled(Map)`
   height: 17.5rem;
@@ -115,4 +117,23 @@ export const RightBox = styled.div`
   gap: 0.5rem;
 `;
 
-export const Marker = styled(MapMarker)``;
+export const ButtonBox = styled.div`
+  display: flex;
+  width: 20.5rem;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 4.5rem;
+`;
+
+export const EditButton = styled(ApplicationButton)`
+  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.main2[600]};
+  width: 10rem;
+  position: static;
+`;
+
+export const DeleteButton = styled(EditButton)`
+  color: ${({ theme }) => theme.color.error};
+  border: 0.0625rem solid ${({ theme }) => theme.color.error};
+  background-color: transparent;
+`;
