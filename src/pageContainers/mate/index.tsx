@@ -48,7 +48,9 @@ const MatePage = () => {
   const [rangeDate, setRangeDate] = useState<string>('');
   const [startAddress, setStartAddress] = useState<string>('');
 
-  const { data: geoData } = useGetGeoCode(startAddress);
+  const { data: geoData } = useGetGeoCode(startAddress, {
+    enabled: !!startAddress,
+  });
 
   useEffect(() => {
     if (geoData && Array.isArray(geoData) && geoData.length > 0) {
