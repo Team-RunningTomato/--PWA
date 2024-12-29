@@ -1,11 +1,14 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { DetailLocationIcon } from '@/assets';
 import { Input, MateBottomSheet, NavigationHeader } from '@/components';
-import { usePostMateInfo } from '@/hooks/apis/meet';
+import {
+  usePatchMeeting, // useGetMeetingDetail,
+  usePostMateInfo,
+} from '@/hooks/apis/meet';
 import { useGetGeoCode } from '@/hooks/apis/nominatim';
 import { mateInfoSchema } from '@/schemas';
 import { useDateStore, useMateSheetStore, useTimeStore } from '@/stores';
@@ -15,11 +18,22 @@ import { useEffect, useState } from 'react';
 import { Address, useDaumPostcodePopup } from 'react-daum-postcode';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-//
 import * as S from './style';
 
 const MatePage = () => {
   const { push } = useRouter();
+  const { get } = useSearchParams();
+
+  const id = get('id');
+
+  useEffect(() => {
+    console.log(id);
+  }, [id]);
+
+  // const { data: meetingDetail } = useGetMeetingDetail(id!, {
+  //   enabled: !!id,
+  // });
+
   const {
     register,
     formState: {
@@ -32,6 +46,10 @@ const MatePage = () => {
   });
 
   const { mutate: postMateInfo } = usePostMateInfo({
+    onSuccess: () => push(Path.MAIN),
+  });
+
+  const { mutate: patchMateInfo } = usePatchMeeting(id!, {
     onSuccess: () => push(Path.MAIN),
   });
 
@@ -193,7 +211,16 @@ const MatePage = () => {
       startLatitude: coordinates.lat,
       addressDetail: addressDetail,
     };
-    postMateInfo(body);
+
+    if (id) {
+      // patchMateInfo(body);
+      console.log(id);
+      return;
+    } else {
+      console.log('post');
+      // postMateInfo(body);
+      return;
+    }
   };
 
   return (
