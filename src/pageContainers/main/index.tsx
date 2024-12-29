@@ -132,22 +132,18 @@ const MainPage = () => {
             </S.RecruitContainer>
             <S.RecruitBox>
               <S.RecruitBox>
-                {sortedMeetingData?.map(({ id, distance, startAt }, index) => {
-                  const address = meetingLocations?.[index]?.address;
-                  const { province, town, village } = address || {};
-
-                  const locationTitle =
-                    `${province || ''} ${town || ''} ${village || ''}`.trim();
-
-                  return (
-                    <MateBox
-                      key={id}
-                      distance={distance}
-                      title={locationTitle}
-                      time={startAt}
-                    />
-                  );
-                })}
+                {sortedMeetingData?.map(
+                  ({ id, distance, title, startAt }, index) => {
+                    return (
+                      <MateBox
+                        key={id}
+                        distance={distance}
+                        title={title}
+                        time={startAt}
+                      />
+                    );
+                  }
+                )}
               </S.RecruitBox>
             </S.RecruitBox>
           </S.RecruitWrapper>
