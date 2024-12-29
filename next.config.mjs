@@ -16,5 +16,9 @@ export default withPWA({
       source: '/kakao/:path*',
       destination: `${process.env.NEXT_PUBLIC_KAKAO_BASE_URL}/:path*`,
     },
+    {
+      source: '/nominatim/:path*',
+      destination: `${process.env.NEXT_PUBLIC_NOMINATIM_BASE_URL}/:path*`,
+    },
   ],
 });

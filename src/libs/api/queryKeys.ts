@@ -26,3 +26,7 @@ export const kakaoQueryKeys = {
     String(y),
   ],
 };
+
+export const nominatimQueryKeys = {
+  getGeoCode: (address: string) => ['nominatim', 'geocode', address],
+};

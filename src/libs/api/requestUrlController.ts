@@ -27,3 +27,8 @@ export const kakaoUrls = {
   getLocation: (x: number, y: number) =>
     `/local/geo/coord2address.json?x=${x}&y=${y}`,
 };
+
+export const nominatimUrls = {
+  getGeoCode: (address: string) =>
+    `/search?q=${encodeURIComponent(address)}&format=json`,
+};

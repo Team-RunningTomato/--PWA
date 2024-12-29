@@ -1,12 +1,12 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 import { DetailLocationIcon } from '@/assets';
 import { Input, MateBottomSheet, NavigationHeader } from '@/components';
 import { usePostMateInfo } from '@/hooks/apis/meet';
+import { useGetGeoCode } from '@/hooks/apis/nominatim';
 import { mateInfoSchema } from '@/schemas';
 import { useDateStore, useMateSheetStore, useTimeStore } from '@/stores';
 import { MateInfoFormType, Path } from '@/types';
@@ -46,6 +46,18 @@ const MatePage = () => {
     lon: string;
   }>({ lat: '', lon: '' });
   const [rangeDate, setRangeDate] = useState<string>('');
+  const [startAddress, setStartAddress] = useState<string>('');
+
+  const { data: geoData } = useGetGeoCode(startAddress);
+
+  useEffect(() => {
+    if (geoData && Array.isArray(geoData) && geoData.length > 0) {
+      const { lat, lon } = geoData[0];
+      setCoordinates({ lat, lon });
+    } else {
+      setCoordinates({ lat: '', lon: '' });
+    }
+  }, [geoData]);
 
   const formatDate = (month: number, date: number) => `${month}월 ${date}일`;
 
@@ -137,23 +149,6 @@ const MatePage = () => {
     }
   };
 
-  const fetchGeocode = async (address: string) => {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-      address
-    )}&format=json`;
-
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-
-      if (data.length > 0) {
-        const { lat, lon } = data[0];
-        setCoordinates({ lat, lon });
-        return { lat, lon };
-      }
-    } catch (error) {}
-  };
-
   const handleDaumPostCodePopupComplete = async ({
     address,
     zonecode,
@@ -171,8 +166,11 @@ const MatePage = () => {
     address,
     zonecode,
   }: Address) => {
-    setValue('startLocation', `${address} ${zonecode}`);
-    await fetchGeocode(address);
+    const fullAddress = `${address} ${zonecode}`;
+    setValue('startLocation', fullAddress);
+    setStartAddress(address);
+    console.log(address);
+    console.log(fullAddress);
   };
 
   const handleStartLocationBtnClick = () =>
