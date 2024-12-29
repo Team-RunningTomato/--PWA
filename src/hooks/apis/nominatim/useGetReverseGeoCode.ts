@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 
-import { get, nominatimQueryKeys, nominatimUrls } from '@/libs';
-import { BaseUrl, GeoCodeType, ReverseGeoCodeType } from '@/types';
+import { get, nominatimUrls } from '@/libs';
+import { BaseUrl, ReverseGeoCodeType } from '@/types';
 
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
