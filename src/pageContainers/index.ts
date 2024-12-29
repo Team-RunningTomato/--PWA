@@ -5,3 +5,4 @@ export { default as MateDetailPage } from './mateDetail';
 export { default as MatePage } from './mate';
 export { default as RunningPage } from './running';
 export { default as MyPage } from './my';
+export { default as MeasurementPage } from './measurement';

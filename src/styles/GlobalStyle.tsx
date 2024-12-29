@@ -35,6 +35,7 @@ export function GlobalStyle() {
           height: 100vh;
           height: 100dvh;
           overscroll-behavior-y: none;
+          overflow-y: hidden;
         }
 
         a {

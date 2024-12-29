@@ -1,7 +1,8 @@
 'use client';
 
-import { BottomBar, MateBox, Profile, RunningLevelBox } from '@/components';
+import { BottomBar, MateCard, Profile, RunningLevelBox } from '@/components';
 import { useGetMyInfo, useGetMyMateInfo } from '@/hooks';
+import { Path } from '@/types';
 
 import * as S from './style';
 
@@ -40,12 +41,11 @@ const MyPage = () => {
         <S.MateWrapper>
           <S.Title>내가 모집한 런닝</S.Title>
           <S.MateContainer>
-            {myMateInfo?.map(({ title, distance, startAt }, index) => (
-              <MateBox
-                key={index}
-                distance={distance}
-                title={title}
-                time={startAt}
+            {myMateInfo?.map((mate) => (
+              <MateCard
+                url={`${Path.MATE}/${mate.id}`}
+                key={mate.id}
+                {...mate}
               />
             ))}
           </S.MateContainer>
