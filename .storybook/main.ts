@@ -1,19 +1,19 @@
-import type { StorybookConfig } from '@storybook/nextjs';
 import path from 'path';
 
+import type { StorybookConfig } from '@storybook/nextjs';
+
 const config: StorybookConfig = {
-  stories: ['**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.tsx'],
   addons: [
-    '@storybook/addon-onboarding',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
+    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/nextjs',
     options: {
-      nextConfigPath: '../next.config.js',
+      nextConfigPath: '../next.config.mjs',
     },
   },
   docs: {
@@ -21,10 +21,24 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (config) => {
     if (config.resolve?.alias)
-      config.resolve.alias['@'] = path?.resolve(__dirname, '../src/');
+      config.resolve.alias['@'] = path?.resolve(__dirname, '../src');
+
     return config;
   },
-  staticDirs: ['../src'],
+  babel: async (config) => ({
+    ...config,
+    presets: [
+      [
+        'next/babel',
+        {
+          'preset-react': {
+            runtime: 'automatic',
+            importSource: '@emotion/react',
+          },
+        },
+      ],
+    ],
+  }),
+  staticDirs: ['../public'],
 };
-
 export default config;

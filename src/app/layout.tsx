@@ -1,4 +1,8 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
+
+import { Layout } from '@/components';
+
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: '런닝할래',
@@ -32,7 +36,11 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='ko'>
-      <body>{children}</body>
+      <body>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
+      </body>
     </html>
   );
 };

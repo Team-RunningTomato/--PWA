@@ -1,7 +1,7 @@
 {
   "name": "런닝할래",
   "short_name": "런닝할래",
-  "start_url": "/",
+  "start_url": "/login",
   "display": "standalone",
   "theme_color": "#B6F828",
   "background_color": "#ffffff",
