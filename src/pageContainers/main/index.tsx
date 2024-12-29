@@ -12,6 +12,7 @@ import {
   useGetMyInfo,
   useGetMyRunningApplication,
 } from '@/hooks';
+import { useGetReverseGeoCode } from '@/hooks/apis/nominatim';
 import { useLVStore } from '@/stores';
 
 import { useEffect, useMemo, useState } from 'react';
@@ -20,19 +21,12 @@ import * as S from './style';
 
 const MainPage = () => {
   const { setLV } = useLVStore();
-
   const { data: myInfo } = useGetMyInfo();
-
   const { data: myRunningApplicationList } = useGetMyRunningApplication();
   const { data: meetingData } = useGetMeetings();
 
   const [runningLocation, setRunningLocation] = useState<string>('');
-
   const [runningTitle, setRunningTitle] = useState<string>('');
-
-  const [meetingLocations, setMeetingLocations] = useState<
-    Map<string, string | undefined>
-  >(new Map());
 
   const { runningUser } = myInfo || {};
   const { totalDistance, longestDistance, shortestDistance, level } =
@@ -59,58 +53,40 @@ const MainPage = () => {
   }, [myRunningApplicationList]);
 
   const { distance, startAt, startLocation } = closestApplication || {};
-
   const { startLatitude, startLongitude } = startLocation || {};
+
+  const { data: reverseGeoData, isSuccess: reverseGeoSuccess } =
+    useGetReverseGeoCode(
+      startLatitude && startLongitude
+        ? [{ lat: startLatitude, lon: startLongitude }]
+        : [],
+      { enabled: !!startLatitude && !!startLongitude }
+    );
+
+  const { data: meetingLocations } = useGetReverseGeoCode(
+    meetingData?.map(({ startLocation }) => ({
+      lat: startLocation.startLatitude,
+      lon: startLocation.startLongitude,
+    })) || [],
+    { enabled: !!meetingData?.length }
+  );
 
   useEffect(() => {
     setLV(level! + 1);
   }, [level]);
 
-  const reverseGeocode = async (
-    lat: number,
-    lon: number
-  ): Promise<{ fullAddress: string; shortAddress: string } | undefined> => {
-    const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      const { province, town, village, road } = data.address;
-
-      const fullAddress = `${province} ${town} ${village} ${road}`.trim();
-      const shortAddress = `${province} ${town} ${village}`.trim();
-
-      return { fullAddress, shortAddress };
-    } catch (error) {}
-  };
-
   useEffect(() => {
-    if (closestApplication) {
-      reverseGeocode(startLatitude!, startLongitude!).then((result) => {
-        if (result) {
-          const { fullAddress, shortAddress } = result;
-          setRunningTitle(fullAddress);
-          setRunningLocation(shortAddress);
-        }
-      });
+    if (reverseGeoSuccess && reverseGeoData?.length) {
+      const { address } = reverseGeoData[0];
+      const { province, town, village, road } = address || {};
+      setRunningTitle(
+        `${province || ''} ${town || ''} ${village || ''}`.trim()
+      );
+      setRunningLocation(
+        `${province || ''} ${town || ''} ${village || ''} ${road || ''}`.trim()
+      );
     }
-  }, [closestApplication, startLatitude, startLongitude]);
-
-  useEffect(() => {
-    if (meetingData && meetingData.length > 0) {
-      meetingData.forEach((meeting) => {
-        const { id, startLocation } = meeting;
-        const { startLatitude, startLongitude } = startLocation;
-
-        reverseGeocode(startLatitude, startLongitude).then((result) => {
-          if (result) {
-            setMeetingLocations((prev) =>
-              new Map(prev).set(id, result.shortAddress)
-            );
-          }
-        });
-      });
-    }
-  }, [meetingData]);
+  }, [reverseGeoSuccess, reverseGeoData]);
 
   const defaultString = '';
   const defaultNumber = 0;
@@ -137,14 +113,24 @@ const MainPage = () => {
               <SelectFilter />
             </S.RecruitContainer>
             <S.RecruitBox>
-              {meetingData?.map(({ id, distance, startAt }) => (
-                <MateBox
-                  key={id}
-                  distance={distance}
-                  title={meetingLocations.get(id)!}
-                  time={startAt}
-                />
-              ))}
+              <S.RecruitBox>
+                {meetingData?.map(({ id, distance, startAt }, index) => {
+                  const address = meetingLocations?.[index]?.address;
+                  const { province, town, village } = address || {};
+
+                  const locationTitle =
+                    `${province || ''} ${town || ''} ${village || ''}`.trim();
+
+                  return (
+                    <MateBox
+                      key={id}
+                      distance={distance}
+                      title={locationTitle}
+                      time={startAt}
+                    />
+                  );
+                })}
+              </S.RecruitBox>
             </S.RecruitBox>
           </S.RecruitWrapper>
         </S.Box>
