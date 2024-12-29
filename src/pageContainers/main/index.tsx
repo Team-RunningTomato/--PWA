@@ -8,11 +8,11 @@ import {
   TopBar,
 } from '@/components';
 import {
+  useGetLocation,
   useGetMeetings,
   useGetMyInfo,
   useGetMyRunningApplication,
 } from '@/hooks';
-import { useGetReverseGeoCode } from '@/hooks/apis/nominatim';
 import { useLVStore } from '@/stores';
 import usePeriodStore from '@/stores/periodStore';
 
@@ -27,8 +27,9 @@ const MainPage = () => {
   const { data: myRunningApplicationList } = useGetMyRunningApplication();
   const { data: meetingData } = useGetMeetings();
 
-  const [runningLocation, setRunningLocation] = useState<string>('');
-  const [runningTitle, setRunningTitle] = useState<string>('');
+  const [closetLocation, setClosetLocation] = useState<string | undefined>(
+    undefined
+  );
 
   const { runningUser } = myInfo || {};
   const { totalDistance, longestDistance, shortestDistance, level } =
@@ -54,41 +55,26 @@ const MainPage = () => {
     });
   }, [myRunningApplicationList]);
 
-  const { distance, startAt, startLocation } = closestApplication || {};
+  const { distance, startAt, startLocation, title } = closestApplication || {};
   const { startLatitude, startLongitude } = startLocation || {};
 
-  const { data: reverseGeoData, isSuccess: reverseGeoSuccess } =
-    useGetReverseGeoCode(
-      startLatitude && startLongitude
-        ? [{ lat: startLatitude, lon: startLongitude }]
-        : [],
-      { enabled: !!startLatitude && !!startLongitude }
-    );
-
-  const { data: meetingLocations } = useGetReverseGeoCode(
-    meetingData?.map(({ startLocation }) => ({
-      lat: startLocation.startLatitude,
-      lon: startLocation.startLongitude,
-    })) || [],
-    { enabled: !!meetingData?.length }
+  const { data: locationData } = useGetLocation(
+    startLongitude ?? 0,
+    startLatitude ?? 0,
+    {
+      enabled: !!startLatitude && !!startLongitude,
+    }
   );
+
+  useEffect(() => {
+    if (locationData && locationData.address_name) {
+      setClosetLocation(locationData.address_name);
+    }
+  }, [startLatitude, startLongitude, locationData]);
 
   useEffect(() => {
     setLV(level! + 1);
   }, [level]);
-
-  useEffect(() => {
-    if (reverseGeoSuccess && reverseGeoData?.length) {
-      const { address } = reverseGeoData[0];
-      const { province, town, village, road } = address || {};
-      setRunningTitle(
-        `${province || ''} ${town || ''} ${village || ''}`.trim()
-      );
-      setRunningLocation(
-        `${province || ''} ${town || ''} ${village || ''} ${road || ''}`.trim()
-      );
-    }
-  }, [reverseGeoSuccess, reverseGeoData]);
 
   const sortedMeetingData = useMemo(() => {
     if (!meetingData) return [];
@@ -115,9 +101,9 @@ const MainPage = () => {
         <S.Box>
           <TopBar />
           <RunningState
-            location={runningLocation ?? defaultString}
+            location={closetLocation ?? defaultString}
             distance={distance ?? defaultNumber}
-            title={runningTitle ?? defaultString}
+            title={title ?? defaultString}
             date={startAt ?? defaultString}
             level={level ?? defaultNumber}
             totalDistance={totalDistance ?? defaultNumber}
@@ -132,18 +118,16 @@ const MainPage = () => {
             </S.RecruitContainer>
             <S.RecruitBox>
               <S.RecruitBox>
-                {sortedMeetingData?.map(
-                  ({ id, distance, title, startAt }, index) => {
-                    return (
-                      <MateBox
-                        key={id}
-                        distance={distance}
-                        title={title}
-                        time={startAt}
-                      />
-                    );
-                  }
-                )}
+                {sortedMeetingData?.map(({ id, distance, title, startAt }) => {
+                  return (
+                    <MateBox
+                      key={id}
+                      distance={distance}
+                      title={title}
+                      time={startAt}
+                    />
+                  );
+                })}
               </S.RecruitBox>
             </S.RecruitBox>
           </S.RecruitWrapper>
