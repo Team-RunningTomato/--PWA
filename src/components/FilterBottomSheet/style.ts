@@ -15,7 +15,7 @@ export const Backdrop = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 22.5rem;
   flex-direction: column;
   border-radius: 0.5rem 0.5rem 0rem 0rem;
   background: ${({ theme }) => theme.color.white};

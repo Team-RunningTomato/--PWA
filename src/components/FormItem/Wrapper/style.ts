@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: flex-start;
 `;
 
 export const Title = styled.p`
