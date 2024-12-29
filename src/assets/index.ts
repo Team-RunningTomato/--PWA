@@ -7,7 +7,7 @@ export { default as SwipeIcon } from './SwipeIcon';
 export { default as RunningShoesIcon } from './RunningShoesIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as WingIcon } from './WingIcon';
-export { default as JoinIcon } from './JoinIcon';
+export { default as PencilIcon } from './PencilIcon';
 export { default as ProfileIcon } from './ProfileIcon';
 export { default as RunningHallaeIcon } from './RunningHallaeIcon';
 export { default as RunningHallaeText } from './RunningHallaeText';

@@ -1,38 +1,47 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-import { HomeIcon, JoinIcon, ProfileIcon, WingIcon } from '@/assets';
+import { HomeIcon, PencilIcon, ProfileIcon, WingIcon } from '@/assets';
+import { Path } from '@/types';
 
 import * as S from './style';
 
 const BottomBar = () => {
-  const { push } = useRouter();
+  const pathname = usePathname();
 
   const menuItems = [
-    { icon: <HomeIcon />, text: '홈', path: '/' },
-    { icon: <WingIcon />, text: '측정', path: '/measure' },
-    { icon: <JoinIcon />, text: '모집', path: '/recruit' },
-    { icon: <ProfileIcon />, text: '내 정보', path: '/profile' },
+    {
+      icon: <HomeIcon isFill={pathname === Path.MAIN} />,
+      text: '홈',
+      path: Path.MAIN,
+    },
+    {
+      icon: <WingIcon isFill={pathname === Path.MEASUREMENT} />,
+      text: '측정',
+      path: Path.MEASUREMENT,
+    },
+    {
+      icon: <PencilIcon isFill={pathname === Path.MATE} />,
+      text: '모집',
+      path: Path.MATE,
+    },
+    {
+      icon: <ProfileIcon isFill={pathname === Path.MY} />,
+      text: '내 정보',
+      path: Path.MY,
+    },
   ];
 
-  const handleNavigation = (path: string) => {
-    push(path);
-  };
-
   return (
-    <S.Wrapper>
-      <S.Container>
-        <S.Box>
-          {menuItems.map(({ icon, text, path }, index) => (
-            <S.IconContainer key={index} onClick={() => handleNavigation(path)}>
-              <S.IconBox>{icon}</S.IconBox>
-              <S.Text>{text}</S.Text>
-            </S.IconContainer>
-          ))}
-        </S.Box>
-      </S.Container>
-    </S.Wrapper>
+    <S.Container>
+      {menuItems.map(({ icon, text, path }, index) => (
+        <S.Button isLocated={path === pathname} href={path} key={index}>
+          {icon}
+          {text}
+        </S.Button>
+      ))}
+    </S.Container>
   );
 };
 

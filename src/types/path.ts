@@ -4,4 +4,6 @@ export enum Path {
   BODY = '/body',
   RUNNING = '/running',
   MATE = '/mate',
+  MEASUREMENT = '/measurement',
+  MY = '/my',
 }

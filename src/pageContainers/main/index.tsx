@@ -2,7 +2,7 @@
 
 import {
   BottomBar,
-  MateBox,
+  MateCard,
   RunningState,
   SelectFilter,
   TopBar,
@@ -15,6 +15,7 @@ import {
 } from '@/hooks';
 import { useLVStore } from '@/stores';
 import usePeriodStore from '@/stores/periodStore';
+import { Path } from '@/types';
 
 import { useEffect, useMemo, useState } from 'react';
 
@@ -118,13 +119,12 @@ const MainPage = () => {
             </S.RecruitContainer>
             <S.RecruitBox>
               <S.RecruitBox>
-                {sortedMeetingData?.map(({ id, distance, title, startAt }) => {
+                {sortedMeetingData?.map((mate) => {
                   return (
-                    <MateBox
-                      key={id}
-                      distance={distance}
-                      title={title}
-                      time={startAt}
+                    <MateCard
+                      key={mate.id}
+                      url={`${Path.MATE}/${mate.id}`}
+                      {...mate}
                     />
                   );
                 })}
