@@ -169,8 +169,6 @@ const MatePage = () => {
     const fullAddress = `${address} ${zonecode}`;
     setValue('startLocation', fullAddress);
     setStartAddress(address);
-    console.log(address);
-    console.log(fullAddress);
   };
 
   const handleStartLocationBtnClick = () =>
