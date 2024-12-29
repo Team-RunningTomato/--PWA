@@ -38,6 +38,9 @@ importers:
       react:
         specifier: 18.2.0
         version: 18.2.0
+      react-daum-postcode:
+        specifier: ^3.2.0
+        version: 3.2.0(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -5545,6 +5548,11 @@ packages:
     engines: {node: '>=10.18'}
     peerDependencies:
       react: ^16.3.0 || ^17.0.1 || ^18.0.0
+
+  react-daum-postcode@3.2.0:
+    resolution: {integrity: sha512-NHY8TUicZXMqykbKYT8kUo2PEU7xu1DFsdRmyWJrLEUY93Xhd3rEdoJ7vFqrvs+Grl9wIm9Byxh3bI+eZxepMQ==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   react-docgen-typescript@2.2.2:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
@@ -13566,6 +13574,10 @@ snapshots:
     dependencies:
       react: 18.2.0
       tween-functions: 1.2.0
+
+  react-daum-postcode@3.2.0(react@18.2.0):
+    dependencies:
+      react: 18.2.0
 
   react-docgen-typescript@2.2.2(typescript@5.7.2):
     dependencies:

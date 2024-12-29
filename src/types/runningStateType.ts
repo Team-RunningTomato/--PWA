@@ -1,11 +1,13 @@
 export default interface RunningStateType {
   location: string;
-  intendKM: string;
+  distance: number;
   title: string;
   date: string;
-  LV: string;
-  distanceKM: string;
-  bestKM: string;
-  worstKM: string;
+  level: number;
+  totalDistance: number;
+  longestDistance: number;
+  shortestDistance: number | null;
   todayRunning: string[];
+
+  //TODO 필드 명 변경시 변경
 }

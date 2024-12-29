@@ -13,14 +13,11 @@ const SelectFilter = () => {
 
   return (
     <>
-      <S.Wrapper
-        onClick={openBottomSheet}
-        isBottomSheetOpen={isBottomSheetOpen}
-      >
-        <S.Text isBottomSheetOpen={isBottomSheetOpen}>
+      <S.Wrapper onClick={openBottomSheet} sortPeriod={sortPeriod}>
+        <S.Text sortPeriod={sortPeriod}>
           {sortPeriod === 'latest' ? '최신 순' : '오래된 순'}
         </S.Text>
-        {isBottomSheetOpen ? <TopArrow /> : <BottomArrow />}
+        {sortPeriod === 'oldest' ? <TopArrow /> : <BottomArrow />}
       </S.Wrapper>
       {isBottomSheetOpen && <FilterBottomSheet />}
     </>

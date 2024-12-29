@@ -1,26 +1,23 @@
 'use client';
 
-import {
-  LocationIcon,
-  RightGreenArrow,
-  RunningShoesIcon,
-  SwipeIcon,
-} from '@/assets';
+import { LocationIcon, RightGreenArrow, SwipeIcon } from '@/assets';
 import RunningStateType from '@/types/runningStateType';
+import { formatDate } from '@/utils';
 
 import React, { useState } from 'react';
 
+import ShoesBox from '../ShoesBox';
 import * as S from './style';
 
 const RunningState = ({
   location,
-  intendKM,
+  distance,
   title,
   date,
-  LV,
-  distanceKM,
-  bestKM,
-  worstKM,
+  level,
+  totalDistance,
+  longestDistance,
+  shortestDistance,
   todayRunning,
 }: RunningStateType) => {
   const [dragX, setDragX] = useState(0);
@@ -56,9 +53,9 @@ const RunningState = ({
   };
 
   const historyData = [
-    { title: '총 거리', value: `${distanceKM}km` },
-    { title: '가장 많이 달린', value: `${bestKM}km` },
-    { title: '가장 적게 달린', value: `${worstKM}km` },
+    { title: '총 거리', value: `${totalDistance}km` },
+    { title: '가장 많이 달린', value: `${longestDistance}km` },
+    { title: '가장 적게 달린', value: `${shortestDistance ?? 0}km` },
   ];
 
   const isRightPosition = dragX > 110;
@@ -78,12 +75,12 @@ const RunningState = ({
                     <LocationIcon />
                     <S.LocationText>{location}</S.LocationText>
                   </S.LocationBox>
-                  <S.IntendKM>{intendKM}KM</S.IntendKM>
+                  <S.IntendKM>{distance}KM</S.IntendKM>
                 </S.LocationContainer>
                 <S.JoinTextBox>
                   <S.JoinTitle>{title}에서 런닝 모집</S.JoinTitle>
                 </S.JoinTextBox>
-                <S.DateText>{date}</S.DateText>
+                <S.DateText>{formatDate(date)}</S.DateText>
               </S.AppearContent>
             )}
             <S.LeftContent
@@ -114,9 +111,9 @@ const RunningState = ({
               ) : (
                 <S.LeftBox>
                   <S.LVImgBox>
-                    <RunningShoesIcon />
+                    <ShoesBox />
                   </S.LVImgBox>
-                  <S.LVText>Lv {LV}</S.LVText>
+                  <S.LVText>Lv {level ?? 0}</S.LVText>
                 </S.LeftBox>
               )}
             </S.LeftContent>

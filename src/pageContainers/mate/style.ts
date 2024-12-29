@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,8 +22,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  bottom: 2%;
+  padding: 3.625rem 0 2rem 0;
 `;
 
 export const RightText = styled.p`
@@ -45,6 +44,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: flex-start;
 `;
 
 export const Title = styled.p`
@@ -63,4 +63,26 @@ export const Button = styled.button`
   border-radius: 0.5rem;
   width: 100%;
   text-align: left;
+  position: relative;
+`;
+
+export const Icon = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1.12rem;
+  height: 1.25rem;
+`;
+
+export const InputButton = styled.button`
+  width: 100%;
+`;
+
+export const ConfirmButton = styled.button`
+  ${({ theme }) => theme.typo.body2B};
+  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.black};
+  width: 20.5rem;
+  height: 3rem;
+  border-radius: 0.5rem;
 `;
