@@ -13,6 +13,7 @@ export const meetingQueryKeys = {
   postMateInfo: () => ['mate', 'info', 'post'],
   deleteMeetingCancel: (id: string) => ['delete', 'cancel', id],
   deleteMeetingBoard: (id: string) => ['meeting', 'delete', 'board', id],
+  patchMeeting: (id: string) => ['patch', 'meeting', id],
 };
 
 export const runQueryKeys = {
