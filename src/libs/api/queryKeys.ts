@@ -9,6 +9,7 @@ export const userQueryKeys = {
 export const meetingQueryKeys = {
   getMeetingDetail: (id: string) => ['meeting', 'detail', id],
   postMeetingApplication: (id: string) => ['meeting, application', id],
+  postMateInfo: () => ['mate', 'info', 'post'],
   deleteMeetingCancel: (id: string) => ['delete', 'cancel', id],
   deleteMeetingBoard: (id: string) => ['meeting', 'delete', 'board', id],
 };
@@ -24,4 +25,8 @@ export const kakaoQueryKeys = {
     String(x),
     String(y),
   ],
+};
+
+export const nominatimQueryKeys = {
+  getGeoCode: (address: string) => ['nominatim', 'geocode', address],
 };
