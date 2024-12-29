@@ -14,6 +14,7 @@ import {
 } from '@/hooks';
 import { useGetReverseGeoCode } from '@/hooks/apis/nominatim';
 import { useLVStore } from '@/stores';
+import usePeriodStore from '@/stores/periodStore';
 
 import { useEffect, useMemo, useState } from 'react';
 
@@ -21,6 +22,8 @@ import * as S from './style';
 
 const MainPage = () => {
   const { setLV } = useLVStore();
+  const { sortPeriod } = usePeriodStore();
+  console.log(sortPeriod);
   const { data: myInfo } = useGetMyInfo();
   const { data: myRunningApplicationList } = useGetMyRunningApplication();
   const { data: meetingData } = useGetMeetings();
@@ -88,6 +91,22 @@ const MainPage = () => {
     }
   }, [reverseGeoSuccess, reverseGeoData]);
 
+  const sortedMeetingData = useMemo(() => {
+    if (!meetingData) return [];
+
+    return [...meetingData].sort((a, b) => {
+      const aDate = new Date(a.startAt).getTime();
+      const bDate = new Date(b.startAt).getTime();
+
+      if (sortPeriod === 'latest') {
+        return bDate - aDate;
+      } else if (sortPeriod === 'oldest') {
+        return aDate - bDate;
+      }
+      return 0;
+    });
+  }, [meetingData, sortPeriod]);
+
   const defaultString = '';
   const defaultNumber = 0;
 
@@ -114,7 +133,7 @@ const MainPage = () => {
             </S.RecruitContainer>
             <S.RecruitBox>
               <S.RecruitBox>
-                {meetingData?.map(({ id, distance, startAt }, index) => {
+                {sortedMeetingData?.map(({ id, distance, startAt }, index) => {
                   const address = meetingLocations?.[index]?.address;
                   const { province, town, village } = address || {};
 
