@@ -4,3 +4,4 @@ export { default as MainPage } from './main';
 export { default as MateDetailPage } from './mateDetail';
 export { default as RunningPage } from './running';
 export { default as MyPage } from './my';
+export { default as MeasurementPage } from './measurement';

@@ -2,18 +2,18 @@
 
 import {
   BottomBar,
-  MateBox,
+  MateCard,
   RunningState,
   SelectFilter,
   TopBar,
 } from '@/components';
-import { MateBoxType, RunningStateType } from '@/types';
+import { MateCardType, RunningStateType } from '@/types';
 
 import * as S from './style';
 
 interface MainPageProps {
   runningStateData: RunningStateType;
-  mateBoxData: MateBoxType[];
+  mateBoxData: MateCardType[];
 }
 
 const MainPage = ({ runningStateData, mateBoxData }: MainPageProps) => {
@@ -30,7 +30,7 @@ const MainPage = ({ runningStateData, mateBoxData }: MainPageProps) => {
             </S.RecruitContainer>
             <S.RecruitBox>
               {mateBoxData.map((item, index) => (
-                <MateBox key={index} {...item} />
+                <MateCard key={index} {...item} />
               ))}
             </S.RecruitBox>
           </S.RecruitWrapper>

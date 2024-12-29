@@ -1,37 +1,27 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
-export const Wrapper = styled.div`
-  display: flex;
+export const Container = styled(Link)`
   padding: 0.75rem;
-  flex-direction: column;
-  justify-content: center;
   border-radius: 0.5rem;
-  background: ${({ theme }) => theme.color.white};
   border: 0.0625rem solid ${({ theme }) => theme.color.gray[100]};
-`;
-
-export const Container = styled.div`
   display: flex;
-  width: 19rem;
+  width: 20.5rem;
   flex-direction: column;
-  gap: 0.5rem;
-`;
+  gap: 0.625rem;
 
-export const MainBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  :active {
+    border: 0.0625rem solid ${({ theme }) => theme.color.main[700]};
+  }
+
+  @media (max-width: 359px) {
+    width: 100%;
+  }
 `;
 
 export const TimeText = styled.p`
   ${({ theme }) => theme.typo.caption1R};
   color: ${({ theme }) => theme.color.gray[500]};
-`;
-
-export const RunningInfoBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.8125rem;
 `;
 
 export const Title = styled.h1`
@@ -44,13 +34,8 @@ export const Distance = styled.p`
   color: ${({ theme }) => theme.color.sneakers[1]};
 `;
 
-export const LocationBox = styled.div`
+export const BottomBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-`;
-
-export const LocationText = styled.p`
-  ${({ theme }) => theme.typo.caption1R};
-  color: ${({ theme }) => theme.color.gray[200]};
+  gap: 0.625rem;
 `;
