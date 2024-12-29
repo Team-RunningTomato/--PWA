@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  width: 19rem;
   flex-direction: column;
   gap: 0.5rem;
 `;
@@ -37,7 +36,6 @@ export const RunningInfoBox = styled.div`
 export const Title = styled.h1`
   ${({ theme }) => theme.typo.body1B};
   color: ${({ theme }) => theme.color.black};
-  width: 19rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
