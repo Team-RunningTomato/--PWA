@@ -23,7 +23,6 @@ import * as S from './style';
 const MainPage = () => {
   const { setLV } = useLVStore();
   const { sortPeriod } = usePeriodStore();
-  console.log(sortPeriod);
   const { data: myInfo } = useGetMyInfo();
   const { data: myRunningApplicationList } = useGetMyRunningApplication();
   const { data: meetingData } = useGetMeetings();
