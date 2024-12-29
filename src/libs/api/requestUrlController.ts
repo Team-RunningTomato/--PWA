@@ -12,6 +12,7 @@ export const userUrls = {
 } as const;
 
 export const meetingUrls = {
+  getMeetings: () => '/meeting',
   getMeetingDetail: (id: string) => `/meeting/${id}`,
   postMeetingApplication: (id: string) => `/meeting/member/${id}`,
   postMateInfo: () => '/meeting',
@@ -31,4 +32,6 @@ export const kakaoUrls = {
 export const nominatimUrls = {
   getGeoCode: (address: string) =>
     `/search?q=${encodeURIComponent(address)}&format=json`,
+  getReverseGeoCode: (lat: number, lon: number) =>
+    `/reverse?lat=${lat}&lon=${lon}&format=json`,
 };

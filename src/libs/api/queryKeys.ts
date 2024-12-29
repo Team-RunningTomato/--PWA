@@ -7,6 +7,7 @@ export const userQueryKeys = {
 } as const;
 
 export const meetingQueryKeys = {
+  getMeetings: () => ['meetings', 'mate', 'application'],
   getMeetingDetail: (id: string) => ['meeting', 'detail', id],
   postMeetingApplication: (id: string) => ['meeting, application', id],
   postMateInfo: () => ['mate', 'info', 'post'],
@@ -29,4 +30,9 @@ export const kakaoQueryKeys = {
 
 export const nominatimQueryKeys = {
   getGeoCode: (address: string) => ['nominatim', 'geocode', address],
+  getReverseGeoCode: (lat: number, lon: number) => [
+    'reverse',
+    String(lat),
+    String(lon),
+  ],
 };
