@@ -30,4 +30,9 @@ export const kakaoQueryKeys = {
 
 export const nominatimQueryKeys = {
   getGeoCode: (address: string) => ['nominatim', 'geocode', address],
+  getReverseGeoCode: (lat: number, lon: number) => [
+    'reverse',
+    String(lat),
+    String(lon),
+  ],
 };

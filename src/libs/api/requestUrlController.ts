@@ -32,4 +32,6 @@ export const kakaoUrls = {
 export const nominatimUrls = {
   getGeoCode: (address: string) =>
     `/search?q=${encodeURIComponent(address)}&format=json`,
+  getReverseGeoCode: (lat: number, lon: number) =>
+    `/reverse?lat=${lat}&lon=${lon}&format=json`,
 };

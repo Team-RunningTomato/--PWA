@@ -34,6 +34,15 @@ export interface GeoCodeType {
   boundingbox: [string, string, string, string];
 }
 
+export interface ReverseGeoCodeType {
+  address: {
+    road: string | undefined;
+    village: string | undefined;
+    town: string | undefined;
+    province: string | undefined;
+  };
+}
+
 export interface TokenInfoType {
   grantType: string;
   accessToken: string;
