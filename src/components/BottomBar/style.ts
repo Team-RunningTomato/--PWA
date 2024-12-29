@@ -1,49 +1,27 @@
 import styled from '@emotion/styled';
-
-export const Wrapper = styled.div`
-  width: 22.5rem;
-  position: absolute;
-  bottom: 0;
-  height: 3.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+import Link from 'next/link';
 
 export const Container = styled.div`
+  height: 3.75rem;
   display: flex;
-  width: 100%;
-  padding: 0.375rem 2.375rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: ${({ theme }) => theme.color.white};
-  border-top: 0.0625rem solid ${({ theme }) => theme.color.gray[100]};
-`;
-
-export const Box = styled.div`
-  display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
+  padding: 0.375rem 2.375rem;
+  background: ${({ theme }) => theme.color.white};
+  border-top: 0.0625rem solid ${({ theme }) => theme.color.gray[100]};
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
 `;
 
-export const IconContainer = styled.button`
+export const Button = styled(Link)<{ isLocated: boolean }>`
+  ${({ theme }) => theme.typo.caption2R};
+  color: ${({ theme, isLocated }) =>
+    isLocated ? theme.color.main2[800] : theme.color.main2[500]};
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.125rem;
-`;
-
-export const IconBox = styled.div`
-  display: flex;
-  padding: 0.1875rem 0.25rem;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Text = styled.p`
-  ${({ theme }) => theme.typo.caption2R};
-  color: ${({ theme }) => theme.color.main2[800]};
 `;
