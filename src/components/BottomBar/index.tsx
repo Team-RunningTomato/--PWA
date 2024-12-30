@@ -27,9 +27,9 @@ const BottomBar = () => {
       path: Path.MATE,
     },
     {
-      icon: <ProfileIcon isFill={pathname === Path.MY} />,
+      icon: <ProfileIcon isFill={pathname === Path.MYPAGE} />,
       text: '내 정보',
-      path: Path.MY,
+      path: Path.MYPAGE,
     },
   ];
 
