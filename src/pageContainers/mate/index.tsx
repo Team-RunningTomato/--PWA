@@ -5,8 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { DetailLocationIcon } from '@/assets';
 import { Input, MateBottomSheet, NavigationHeader } from '@/components';
+import { useGetLocation } from '@/hooks';
 import {
-  usePatchMeeting, // useGetMeetingDetail,
+  useGetMeetingDetail,
+  usePatchMeeting,
   usePostMateInfo,
 } from '@/hooks/apis/meet';
 import { useGetGeoCode } from '@/hooks/apis/nominatim';
@@ -26,13 +28,26 @@ const MatePage = () => {
 
   const id = get('id');
 
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
+  const { data: meetingDetail } = useGetMeetingDetail(id!, {
+    enabled: !!id,
+  });
 
-  // const { data: meetingDetail } = useGetMeetingDetail(id!, {
-  //   enabled: !!id,
-  // });
+  const {
+    title: detailTitle,
+    startLocation: detailLocation,
+    startAt,
+    distance: detailDistance,
+    addressDetail: detailAddress,
+  } = meetingDetail || {};
+
+  const { data: locationData } = useGetLocation(
+    detailLocation?.startLongitude ?? 0,
+    detailLocation?.startLatitude ?? 0,
+    {
+      enabled:
+        !!detailLocation?.startLongitude && !!detailLocation?.startLatitude,
+    }
+  );
 
   const {
     register,
@@ -41,9 +56,41 @@ const MatePage = () => {
     },
     setValue,
     handleSubmit,
+    reset,
   } = useForm<MateInfoFormType>({
     resolver: zodResolver(mateInfoSchema),
+    defaultValues: {
+      title: '',
+      startLocation: '',
+      distance: 0,
+      addressDetail: '',
+      date: '',
+    },
   });
+
+  useEffect(() => {
+    if (
+      meetingDetail &&
+      locationData?.address_name &&
+      startAt &&
+      detailLocation?.startLatitude &&
+      detailLocation?.startLongitude
+    ) {
+      reset({
+        title: detailTitle || '',
+        startLocation: locationData.address_name || '',
+        distance: Number(detailDistance) || 1,
+        addressDetail: detailAddress || '',
+        date: formatDateTime(meetingDetail.startAt),
+      });
+
+      setRangeDate(startAt.replace('T', ' '));
+      setCoordinates({
+        lat: String(detailLocation?.startLatitude),
+        lon: String(detailLocation?.startLongitude),
+      });
+    }
+  }, [meetingDetail, locationData, reset, detailLocation]);
 
   const { mutate: postMateInfo } = usePostMateInfo({
     onSuccess: () => push(Path.MAIN),
@@ -55,6 +102,7 @@ const MatePage = () => {
 
   const { isMateSheetOpen, openMateSheet } = useMateSheetStore();
   const { selectedDates } = useDateStore();
+
   const { AMPM, hour, minute } = useTimeStore();
 
   const daumPostCode = useDaumPostcodePopup();
@@ -80,9 +128,26 @@ const MatePage = () => {
     }
   }, [geoData]);
 
-  const formatDate = (month: number, date: number) => `${month}월 ${date}일`;
+  const formatDate = (month: number, date: number) => `${month}월 ${date}일 /`;
 
   const isNull = AMPM === null || hour === null || minute === null;
+
+  const formatDateTime = (isoString: string) => {
+    const date = new Date(isoString);
+
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    let hour = date.getHours();
+    const minute = date.getMinutes();
+    const isPM = hour >= 12;
+
+    const period = isPM ? '오후' : '오전';
+    if (isPM) hour = hour === 12 ? 12 : hour - 12;
+    else hour = hour === 0 ? 12 : hour;
+
+    return `${month}월 ${day}일 ${period} ${hour}시 ${minute}분`;
+  };
 
   const formatTime = (
     AMPM: string | null,
@@ -213,12 +278,11 @@ const MatePage = () => {
     };
 
     if (id) {
-      // patchMateInfo(body);
-      console.log(id);
+      patchMateInfo(body);
       return;
     } else {
-      console.log('post');
-      // postMateInfo(body);
+      postMateInfo(body);
+
       return;
     }
   };
