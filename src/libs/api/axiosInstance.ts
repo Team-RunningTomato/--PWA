@@ -55,7 +55,7 @@ axiosInstance.interceptors.response.use(
     if (response.config.url?.includes('/local/geo/coord2address.json')) {
       return response.data.documents[0].road_address
         ? response.data.documents[0].road_address
-        : response.data.documents[0].address.address_name;
+        : response.data.documents[0].address;
     }
 
     return response.data;
