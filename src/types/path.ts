@@ -5,5 +5,5 @@ export enum Path {
   RUNNING = '/running',
   MATE = '/mate',
   MEASUREMENT = '/measurement',
-  MY = '/my',
+  MYPAGE = '/mypage',
 }
