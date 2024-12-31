@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './style';
 
 interface DateItem {
+  month: number;
   day: string;
   date: number;
 }
@@ -24,6 +25,7 @@ const Calender: React.FC = () => {
       dates.push({
         day: date.toLocaleDateString('ko-KR', { weekday: 'short' }),
         date: date.getDate(),
+        month: date.getMonth() + 1,
       });
     }
 
@@ -71,7 +73,7 @@ const Calender: React.FC = () => {
       setEndIndex(null);
 
       const selectedDate = {
-        month: new Date().getMonth() + 1,
+        month: dates[index].month,
         date: dates[index].date,
       };
       setSelectedDates([selectedDate]);
