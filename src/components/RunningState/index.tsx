@@ -36,8 +36,11 @@ const RunningState = ({
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
     const deltaX = clientX - startX;
 
-    setDragX((prev) => Math.max(-200, Math.min(200, prev + deltaX)));
-    setStartX(clientX);
+    setDragX((prev) => {
+      const newDragX = Math.max(-200, Math.min(200, prev + deltaX));
+      setStartX(clientX);
+      return newDragX;
+    });
   };
 
   const handleDragEnd = () => {
@@ -85,10 +88,10 @@ const RunningState = ({
             )}
             <S.LeftContent
               onMouseDown={handleDragStart}
-              onMouseMove={handleDragMove}
+              onMouseMove={isDragging ? handleDragMove : undefined} // 드래그 중일 때만 핸들러 실행
               onMouseUp={handleDragEnd}
               onTouchStart={handleDragStart}
-              onTouchMove={handleDragMove}
+              onTouchMove={isDragging ? handleDragMove : undefined}
               onTouchEnd={handleDragEnd}
               dragX={dragX}
               isRightPosition={isRightPosition}
