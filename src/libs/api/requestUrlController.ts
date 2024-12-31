@@ -18,6 +18,7 @@ export const meetingUrls = {
   postMateInfo: () => '/meeting',
   deleteMeetingCancel: (id: string) => `/meeting/member/${id}`,
   deleteMeetingBoard: (id: string) => `/meeting/${id}`,
+  patchMeeting: (id: string) => `/meeting/${id}`,
 } as const;
 
 export const runUrls = {

@@ -40,7 +40,8 @@ export const MinuteInput = styled.input`
   ${({ theme }) => theme.typo.body1B};
   color: ${({ theme }) => theme.color.black};
   border: none;
-  width: 1.75rem;
+  width: 2.25rem;
+  text-align: center;
 
   ::placeholder {
     color: ${({ theme }) => theme.color.gray[500]};

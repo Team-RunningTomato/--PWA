@@ -5,3 +5,4 @@ export * from './usePostMateInfo';
 export * from './usePostMeetingApplication';
 export * from './useDeleteMeetingCancel';
 export * from './useDeleteMeetingBoard';
+export * from './usePatchMeeting';
